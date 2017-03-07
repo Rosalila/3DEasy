@@ -17,6 +17,7 @@ class PrintingHubsController < ApplicationController
   end
 
   def admin_show
+    @printing_hub = PrintingHub.find_by_id(params[:id])
     @printing_set = PrintingSet.new
     @printer = Printer.new
     @order = Order.new

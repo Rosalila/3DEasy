@@ -9,6 +9,7 @@
 <% end %>
 
 <h1><%= @printing_hub.name %></h1>
+<%= link_to 'Watch', @printing_hub, class: "ui button" %>
 <%= link_to 'Edit', edit_printing_hub_path(@printing_hub), class: "ui button" %>
 
 <h2>Members:</h2>

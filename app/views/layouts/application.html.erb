@@ -55,7 +55,7 @@
 		          <div class="divider"></div>
 				      <div class="header">My hubs</div>
               <% current_user.printing_hubs.each do |printing_hub| %>
-                <%= link_to printing_hub.name, printing_hub, class: "item" %>
+                <%= link_to printing_hub.name, "/printing_hubs/admin/"+printing_hub.id.to_s, class: "item" %>
               <% end %>
 		          <div class="divider"></div>
               <%= link_to 'Add your hub', new_printing_hub_path, class: "item" %>
