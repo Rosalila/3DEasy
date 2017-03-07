@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  printing_set_id: 1
+  github_repo: MyString
+
+two:
+  printing_set_id: 1
+  github_repo: MyString

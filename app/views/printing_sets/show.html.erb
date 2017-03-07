@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<%= render 'add_printable_modal' %>
+
+<% @printing_set.printables.each do |printable| %>
+  <%= render 'print_modal', locals: {printable_id: printable.id} %>
+<% end %>
+
+<h1><%= @printing_set.name %></h1>
+
+<%= link_to 'Edit', edit_printing_set_path(@printing_set), class: "ui button" %>
+
+<p>
+  <strong>Printing hub:</strong>
+  <%= link_to @printing_set.printing_hub.name, @printing_set.printing_hub %>
+</p>
+
+<p>
+  <strong>Doges:</strong>
+  <%= @printing_set.doges %>
+</p>
+
+<h2>Printables</h2>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+		  <th>Image</th>
+		  <th>Github repo</th>
+		  <th></th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @printing_set.printables.each do |printable| %>
+		  <tr>
+		    <td><img src="https://raw.githubusercontent.com/<%= printable.github_repo %>/master/image.png" /></td>
+		    <td><%= printable.github_repo %></td>
+        <td><input type="button" class="ui button" value="Print" onClick="$('.ui.print_<%=printable.id%>.modal').modal('show');"/></td>
+		  </tr>
+		<% end %>
+  </tbody>
+</table>
+
+<input type="button" class="ui button" value="New printable" onClick="$('.ui.printable.modal').modal('show');"/>

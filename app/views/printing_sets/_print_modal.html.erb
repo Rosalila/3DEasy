@@ -1,0 +1,19 @@
+<div class="ui print_<%=locals[:printable_id]%> modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Print
+  </div>
+  <div class="image content">
+    <div class="description">
+
+			<%= form_tag("/print", method: "get", class: "ui form") do %>
+				<%= hidden_field_tag(:printable_id, locals[:printable_id]) %>
+        <%= label :printer, "printer" %>
+				<%= collection_select(:printing_hub, :printer_id, @printing_set.printing_hub.printers, :id, :name) %>
+        <br>
+				<input type="submit" class="ui button"/>
+			<% end %>
+
+    </div>
+  </div>
+</div>

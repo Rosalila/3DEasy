@@ -1,0 +1,2 @@
+module PrintingHubsHelper
+end

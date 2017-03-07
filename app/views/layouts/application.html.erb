@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ThreeDEasy</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="/semantic/semantic.min.css"/>
+    <link rel="stylesheet" href="/semantic/components/transition.css"/>
+    <link rel="stylesheet" href="/semantic/components/dimmer.css"/>
+    <link rel="stylesheet" href="/semantic/components/modal.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/semantic/semantic.min.js"></script>
+    <script src="/semantic/components/transition.min.js"></script>
+    <script src="/semantic/components/dimmer.min.js"></script>
+    <script src="/semantic/components/modal.min.js"></script>
+
+		<style type="text/css">
+			body {
+				background-color: #FFFFFF;
+			}
+			.ui.menu .item img.logo {
+				margin-right: 1.5em;
+			}
+			.main.container {
+				margin-top: 7em;
+			}
+			.wireframe {
+				margin-top: 2em;
+			}
+			.ui.footer.segment {
+				margin: 5em 0em 0em;
+				padding: 5em 0em;
+			}
+			</style>
+  </head>
+
+  <body>
+
+    <div class="ui fixed inverted menu">
+		  <div class="ui container">
+		    <a href="#" class="header item">
+		      <img class="logo" src="assets/images/logo.png">
+		      Project Name
+		    </a>
+		    <%= link_to 'Home', root_path, class: "item" %>
+			  <% if !current_user %>
+				  <%= link_to "Sign in", "/users/sign_in", class: "item" %>
+			  <% else %>
+				  <div class="ui simple dropdown item">
+		        Hubs <i class="dropdown icon"></i>
+				    <div class="menu">
+		          <div class="divider"></div>
+				      <div class="header">My hubs</div>
+              <% current_user.printing_hubs.each do |printing_hub| %>
+                <%= link_to printing_hub.name, printing_hub, class: "item" %>
+              <% end %>
+		          <div class="divider"></div>
+              <%= link_to 'Add your hub', new_printing_hub_path, class: "item" %>
+				    </div>
+				  </div>
+				  <%= link_to destroy_user_session_path, :method => :delete  do %>Sign out<%end%>
+			  <%end%>
+		  </div>
+		</div>
+
+    <div class="ui main text container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

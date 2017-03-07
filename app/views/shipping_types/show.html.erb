@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @shipping_type.name %>
+</p>
+
+<p>
+  <strong>Printing hub:</strong>
+  <%= @shipping_type.printing_hub_id %>
+</p>
+
+<p>
+  <strong>Doges:</strong>
+  <%= @shipping_type.doges %>
+</p>
+
+<%= link_to 'Edit', edit_shipping_type_path(@shipping_type) %> |
+<%= link_to 'Back', shipping_types_path %>

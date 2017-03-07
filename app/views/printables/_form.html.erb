@@ -1,0 +1,27 @@
+<%= form_for(printable) do |f| %>
+  <% if printable.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(printable.errors.count, "error") %> prohibited this printable from being saved:</h2>
+
+      <ul>
+      <% printable.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :printing_set_id %>
+    <%= f.number_field :printing_set_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :github_repo %>
+    <%= f.text_field :github_repo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

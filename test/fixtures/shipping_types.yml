@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  printing_hub_id: 1
+  doges: 9.99
+
+two:
+  name: MyString
+  printing_hub_id: 1
+  doges: 9.99

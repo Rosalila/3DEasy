@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @printer.printing_hub_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @printer.name %>
+</p>
+
+<p>
+  <strong>Ip:</strong>
+  <%= @printer.ip %>
+</p>
+
+<p>
+  <strong>Api user:</strong>
+  <%= @printer.api_user %>
+</p>
+
+<p>
+  <strong>Api key:</strong>
+  <%= @printer.api_key %>
+</p>
+
+<%= link_to 'Edit', edit_printer_path(@printer) %> |
+<%= link_to 'Back', printers_path %>

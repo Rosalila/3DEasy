@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  printing_set_id: 1
+  order_state_id: 1
+  doge_address: MyString
+  shipping_address: MyText
+  shipping_type_id: 1
+
+two:
+  user_id: 1
+  printing_set_id: 1
+  order_state_id: 1
+  doge_address: MyString
+  shipping_address: MyText
+  shipping_type_id: 1

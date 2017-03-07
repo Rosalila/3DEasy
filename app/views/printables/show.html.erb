@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Printing set:</strong>
+  <%= @printable.printing_set_id %>
+</p>
+
+<p>
+  <strong>Github repo:</strong>
+  <%= @printable.github_repo %>
+</p>
+
+<%= link_to 'Edit', edit_printable_path(@printable) %> |
+<%= link_to 'Back', printables_path %>

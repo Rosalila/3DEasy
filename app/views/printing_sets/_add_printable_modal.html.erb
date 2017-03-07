@@ -1,0 +1,38 @@
+<div class="ui printable modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Add order
+  </div>
+  <div class="image content">
+    <div class="description">
+
+			<%= form_for @printable, html: {class: 'ui form' } do |f| %>
+				<% if @printable.errors.any? %>
+					<div id="error_explanation">
+						<h2><%= pluralize(@printable.errors.count, "error") %> prohibited this printable from being saved:</h2>
+
+						<ul>
+						<% @printable.errors.full_messages.each do |message| %>
+						  <li><%= message %></li>
+						<% end %>
+						</ul>
+					</div>
+				<% end %>
+
+				<div class="field">
+					<%= f.hidden_field :printing_set_id, value: @printing_set.id %>
+				</div>
+
+				<div class="field">
+					<%= f.label :github_repo %>
+					<%= f.text_field :github_repo %>
+				</div>
+
+				<div class="actions">
+					<%= f.submit "Submit", class: "ui button" %>
+				</div>
+			<% end %>
+
+    </div>
+  </div>
+</div>

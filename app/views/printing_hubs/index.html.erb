@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Printing Hubs</h1>
+
+<div class="ui cards">
+	<% @printing_hubs.each do |printing_hub| %>
+
+		<div class="ui card">
+			<div class="image">
+				<img src="<%= printing_hub.image.url %>">
+			</div>
+			<div class="content">
+				<a class="header"><%= printing_hub.name %></a>
+				<div class="meta">
+				  <span class="date">Joined in <%= printing_hub.created_at.year %></span>
+				</div>
+				<div class="description">
+				  <%= printing_hub.description %>
+				</div>
+			</div>
+			<div class="extra content">
+				<a>
+				  <i class="shopping basket icon"></i>
+				  <%= printing_hub.printing_sets.count %> Items
+				</a>
+			</div>
+		</div>
+	<% end %>
+</div>
