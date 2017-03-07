@@ -1,0 +1,27 @@
+<%if @printing_hubs_cart_items.size == 0 %>
+	<p>You currently have no items in your cart. Go <a href="/">grab some</a>!</p>
+<% else %>
+
+	<h1>Your carts</h1>
+
+	<p>You currently have <%= @printing_hubs_cart_items.size %> carts, please select</p>
+	<table class="ui celled table">
+		<thead>
+		  <tr>
+				<th>Hub</th>
+				<th>Items</th>
+				<th></th>
+		  </tr>
+		</thead>
+		<tbody>
+			<% PrintingHub.all.each do |printing_hub| %>
+				<tr>
+				  <td><%= printing_hub.name %></td>
+				  <td><%= @printing_hubs_cart_items[printing_hub.id] %> items</td>
+				  <td><%= link_to "Show", printing_hub_cart_path(printing_hub), class: 'ui button' %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+<% end %>

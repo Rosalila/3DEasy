@@ -42,7 +42,7 @@
     <div class="ui fixed inverted menu">
 		  <div class="ui container">
 		    <a href="#" class="header item">
-		      <img class="logo" src="assets/images/logo.png">
+		      <img class="logo" src="/img/logo.png">
 		      3DEasy
 		    </a>
 		    <%= link_to 'Home', root_path, class: "item" %>
@@ -61,7 +61,9 @@
               <%= link_to 'Add your hub', new_printing_hub_path, class: "item" %>
 				    </div>
 				  </div>
-				  <%= link_to destroy_user_session_path, :method => :delete, :class => "item" do %>Sign out<%end%>
+    		  <%= link_to cart_path, :class => "item" do %>Cart<%end%>
+    		  <%= link_to orders_path, :class => "item" do %>Orders<%end%>
+    		  <%= link_to destroy_user_session_path, :method => :delete, :class => "item" do %>Sign out<%end%>
 			  <%end%>
 		  </div>
 		</div>

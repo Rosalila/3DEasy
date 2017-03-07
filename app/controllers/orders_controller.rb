@@ -1,10 +1,112 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
+  def checkout
+    @shipping_type = ShippingType.find_by_id(params[:shipping_type_id])
+    @printing_hub = PrintingHub.find_by_id(params[:printing_hub_id])
+
+    @order = Order.new
+    @order.user_id = current_user.id
+    @order.order_state_id = OrderState.find_by_name("pending").id
+    @order.shipping_address = params[:order][:shipping_address]
+    @order.shipping_type_id = @shipping_type.id
+    @order.printing_hub_id = @printing_hub.id
+    @order.doges = 0
+    #TODO Dogecoin @order.doge_address = ...
+
+    @order.save
+
+    current_user.cart_items.each do |cart_item|
+      if cart_item.printing_set.printing_hub == @printing_hub
+		    order_item = OrderItem.new
+		    order_item.order_id = @order.id
+		    order_item.printing_set_id = cart_item.printing_set_id
+		    order_item.amount = cart_item.amount
+		    order_item.save
+        cart_item.destroy
+        @order.doges += order_item.amount * order_item.printing_set.doges + @shipping_type.doges
+      end
+    end
+
+    @order.save
+
+    redirect_to @order
+  end
+
+  def cart
+    @printing_hubs_cart_items = {}
+    current_user.cart_items.each do |cart_item|
+      if @printing_hubs_cart_items[cart_item.printing_set.printing_hub.id] == nil
+        @printing_hubs_cart_items[cart_item.printing_set.printing_hub.id] = 1
+      else
+        @printing_hubs_cart_items[cart_item.printing_set.printing_hub.id]+=1
+      end
+    end
+    if @printing_hubs_cart_items.size == 1
+      redirect_to printing_hub_cart_path(current_user.cart_items.first.printing_set.printing_hub)
+    end
+  end
+
+  def printing_hub_cart
+    @printing_hub = PrintingHub.find_by_id(params[:id])
+    @shipping_type = @printing_hub.shipping_types.first
+    if params[:shipping_type] != nil
+      @shipping_type = ShippingType.find_by_id(params[:shipping_type][:id])
+    end
+    if params[:shipping_type_id] != nil
+      @shipping_type = ShippingType.find_by_id(params[:shipping_type_id])
+    end
+    @items = []
+    current_user.cart_items.each do |cart_item|
+      if cart_item.printing_set.printing_hub.id == @printing_hub.id
+        @items.push(cart_item)
+      end
+    end
+  end
+
+  def delete_from_cart
+    @cart_item = CartItem.find_by_id(params[:id])
+    @cart_item.destroy
+    shipping_type_id = nil
+    if params[:shipping_type]
+      shipping_type_id = params[:shipping_type][:id]
+    end
+    if params[:shipping_type_id]
+      shipping_type_id = params[:shipping_type_id]
+    end
+    redirect_to printing_hub_cart_path(@cart_item.printing_set.printing_hub, shipping_type_id: shipping_type_id), notice: 'The item was removed from the cart.'
+  end
+
+  def update_item_amount
+    @cart_item = CartItem.find_by_id(params[:item_id])
+    @cart_item.amount = params[:item][:amount]
+    @cart_item.save
+    shipping_type_id = nil
+    if params[:shipping_type]
+      shipping_type_id = params[:shipping_type][:id]
+    end
+    if params[:shipping_type_id]
+      shipping_type_id = params[:shipping_type_id]
+    end
+    redirect_to printing_hub_cart_path(@cart_item.printing_set.printing_hub, shipping_type_id: shipping_type_id), notice: 'The item was updated.'
+  end
+
+  def add_to_cart
+    @printing_set = PrintingSet.find_by_id(params[:printing_set_id])
+
+    if CartItem.exists?({ user_id: current_user.id, printing_set_id: @printing_set.id })
+      redirect_to PrintingHub.first, notice: 'You already have that item on your cart.'
+      return
+    end
+
+    CartItem.create({ user_id: current_user.id, printing_set_id: @printing_set.id, amount: 1 })
+    redirect_to @printing_set.printing_hub, notice: 'The item was added to your cart.'
+  end
+
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = current_user.orders
   end
 
   # GET /orders/1

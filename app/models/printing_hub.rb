@@ -7,4 +7,5 @@ class PrintingHub < ApplicationRecord
   has_many :shipping_types
   has_many :orders, through: :printing_sets
   has_many :cart_items
+  has_many :orders
 end

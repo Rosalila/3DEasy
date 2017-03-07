@@ -2,32 +2,6 @@
 
 <%= render 'add_printing_set_modal' %>
 
-<!--<table class="ui celled table">
-  <thead>
-    <tr>
-		  <th>Image</th>
-		  <th>Name</th>
-		  <th>Description</th>
-		  <th>Doges</th>
-		  <th></th>
-    </tr>
-  </thead>
-  <tbody>
-		<% @printing_hub.printing_sets.each do |printing_set| %>
-		  <tr>
-		    <td><img width="150" src="<%= printing_set.image %>"/></td>
-		    <td><%= printing_set.name %></td>
-		    <td><%= printing_set.description %></td>
-		    <td><%= printing_set.doges %></td>
-        <td>
-          <input type="button" class="ui button" value="Order" onClick="$('.ui.order_<%= printing_set.id %>.modal').modal('show');"/>
-          <%= link_to "Show", printing_set, class: "ui button" %>
-        </td>
-		  </tr>
-		<% end %>
-  </tbody>
-</table>-->
-
 <input type="button" class="positive ui button" value="New printing set" onClick="$('.ui.printing_set.modal').modal('show');"/>
 
 <h4 class="ui horizontal divider header">
@@ -44,7 +18,10 @@
       <div class="ui dimmer">
         <div class="content">
           <div class="center">
-            <div class="ui inverted button">Add To Card</div>
+            <%= form_tag("/add_to_cart", method: "post") do %>
+              <input type="hidden" value="<%=printing_set.id%>" name="printing_set_id"/>
+              <input type="submit" value="Add To Card" class="ui inverted button"/>
+            <% end %>
           </div>
         </div>
       </div>
@@ -61,8 +38,8 @@
     </div>
 		<div class="extra content">
       <a>
-        <i class="bitcoin icon"></i>
-        <%= printing_set.doges %> Doges
+        <!--<i class="bitcoin icon"></i>-->
+        Ð <%= printing_set.doges %>
       </a>
 		</div>
     <div class="extra content">

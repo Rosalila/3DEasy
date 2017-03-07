@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Your cart</h1>
+<% total_doges = 0%>
+<% total_items = 0%>
+<table class="ui celled table">
+  <thead>
+    <tr>
+		  <th>Name</th>
+		  <th>Doges</th>
+		  <th>Amount</th>
+		  <th></th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @items.each do |item| %>
+      <% printing_set = item.printing_set %>
+			<% total_doges += printing_set.doges*item.amount%>
+			<% total_items += item.amount%>
+		  <tr>
+		    <td><%= printing_set.name %></td>
+		    <td>Ð <%= printing_set.doges %></td>
+		    <td>
+          
+
+            <%= form_tag(update_item_amount_path, method: "post", class: 'ui form') do %>
+              <input type="hidden" value="<%=item.id%>" name="item_id"/>
+              <% if @shipping_type %>
+                <input type="hidden" value="<%=@shipping_type.id%>" name="shipping_type[id]"/>
+              <% end %>
+              <%= select("item", "amount", [1,2,3,4,5,6,7,8,9,10], {prompt: item.amount.to_s}, onchange: 'this.form.submit()') %>
+            <% end %>
+
+        </td>
+        <td><%= link_to 'Remove', delete_item_path(item, shipping_type_id: @shipping_type.id), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "ui button" %></td>
+		  </tr>
+		<% end %>
+  </tbody>
+</table>
+
+<h2>Shipping method</h2>
+<div class="field">
+  <%= form_tag(printing_hub_cart_path(@printing_hub), method: "get", class: 'ui form') do %>
+  	<%= collection_select :shipping_type, :id, @printing_hub.shipping_types.all, :id, :name, {prompt: @shipping_type.name}, onchange: 'this.form.submit()' %>
+  <% end %>
+</div>
+
+<% shipping = @shipping_type.doges*total_items %>
+<p><strong>Subtotal:</strong> Ð<%= total_doges %></p>
+<p><strong>Shipping:</strong> Ð<%= shipping %></p>
+<p><strong>Total:</strong> Ð<%= total_doges + shipping %></p>
+
+<%= form_tag(checkout_path, method: "post", class: 'ui form') do %>
+  <h2>Shipping address</h2>
+  <%= text_area "order", "shipping_address"%>
+  <br>
+  <input type="hidden" value="<%=@printing_hub.id%>" name="printing_hub_id"/>
+  <input type="hidden" value="<%=@shipping_type.id%>" name="shipping_type_id"/>
+  <%= submit_tag 'Checkout', class: 'ui button' %>
+<% end %>

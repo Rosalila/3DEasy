@@ -34,7 +34,7 @@ class PrintingSetsController < ApplicationController
 
     respond_to do |format|
       if @printing_set.save
-        format.html { redirect_to @printing_set.printing_hub, notice: 'Printing set was successfully created.' }
+        format.html { redirect_to printing_hub_admin_show_path(@printing_set.printing_hub), notice: 'Printing set was successfully created.' }
         format.json { render :show, status: :created, location: @printing_set }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class PrintingSetsController < ApplicationController
   def update
     respond_to do |format|
       if @printing_set.update(printing_set_params)
-        format.html { redirect_to printing_hub_path(@printing_set.printing_hub_id), notice: 'Printing set was successfully updated.' }
+        format.html { redirect_to @printing_set, notice: 'Printing set was successfully updated.' }
         format.json { render :show, status: :ok, location: @printing_set }
       else
         format.html { render :edit }

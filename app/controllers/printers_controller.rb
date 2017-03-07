@@ -32,7 +32,7 @@ class PrintersController < ApplicationController
 
     respond_to do |format|
       if @printer.save
-        format.html { redirect_to @printer.printing_hub, notice: 'Printer was successfully created.' }
+        format.html { redirect_to printing_hub_admin_show_path(@printer.printing_hub), notice: 'Printer was successfully created.' }
         format.json { render :show, status: :created, location: @printer }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class PrintersController < ApplicationController
   def update
     respond_to do |format|
       if @printer.update(printer_params)
-        format.html { redirect_to @printer, notice: 'Printer was successfully updated.' }
+        format.html { redirect_to printing_hub_admin_show_path(@printer.printing_hub), notice: 'Printer was successfully updated.' }
         format.json { render :show, status: :ok, location: @printer }
       else
         format.html { render :edit }

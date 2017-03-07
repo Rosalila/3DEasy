@@ -22,6 +22,8 @@ class PrintingHubsController < ApplicationController
     @printer = Printer.new
     @order = Order.new
     @shipping_type = ShippingType.new
+
+    @orders = @printing_hub.orders
   end
 
   # GET /printing_hubs/new
@@ -49,7 +51,7 @@ class PrintingHubsController < ApplicationController
         user_in_printing_hub.user_id = current_user.id
         user_in_printing_hub.printing_hub_id = @printing_hub.id
         user_in_printing_hub.save
-        format.html { redirect_to @printing_hub, notice: 'Printing hub was successfully created.' }
+        format.html { redirect_to printing_hub_admin_show_path(@printing_hub), notice: 'Printing hub was successfully created.' }
         format.json { render :show, status: :created, location: @printing_hub }
       else
         format.html { render :new }
@@ -63,7 +65,7 @@ class PrintingHubsController < ApplicationController
   def update
     respond_to do |format|
       if @printing_hub.update(printing_hub_params)
-        format.html { redirect_to @printing_hub, notice: 'Printing hub was successfully updated.' }
+        format.html { redirect_to printing_hub_admin_show_path(@printing_hub), notice: 'Printing hub was successfully updated.' }
         format.json { render :show, status: :ok, location: @printing_hub }
       else
         format.html { render :edit }

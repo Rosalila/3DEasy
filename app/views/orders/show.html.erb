@@ -1,18 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @order.user_id %>
-</p>
+<h1>Order #<%= @order.id %></h1>
 
 <p>
-  <strong>Printing set:</strong>
-  <%= @order.printing_set_id %>
+  <strong>User:</strong>
+  <%= @order.user.username %>
 </p>
 
 <p>
   <strong>Order state:</strong>
-  <%= @order.order_state_id %>
+  <%= @order.order_state.name %>
 </p>
 
 <p>
@@ -27,8 +24,37 @@
 
 <p>
   <strong>Shipping type:</strong>
-  <%= @order.shipping_type_id %>
+  <%= @order.shipping_type.name %>
 </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<% items_amount = 0 %>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+		  <th>Item</th>
+		  <th>Amount</th>
+		  <th>Doges</th>
+		  <th></th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @order.order_items.each do |order_item| %>
+      <% items_amount += order_item.amount %>
+		  <tr>
+		    <td><%= order_item.printing_set.name %></td>
+		    <td><%= order_item.amount %></td>
+		    <td>Ð <%= order_item.amount*order_item.printing_set.doges %></td>
+		    <td><%= link_to "Show", order_item.printing_set, class: 'ui button' %></td>
+		  </tr>
+		<% end %>
+  </tbody>
+</table>
+<p>
+  <strong>Shipping:</strong>
+  Ð <%= @order.shipping_type.doges * items_amount %>
+</p>
+<p>
+  <strong>Total:</strong>
+  Ð <%= @order.doges %>
+</p>

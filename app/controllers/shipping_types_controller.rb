@@ -28,7 +28,7 @@ class ShippingTypesController < ApplicationController
 
     respond_to do |format|
       if @shipping_type.save
-        format.html { redirect_to @shipping_type.printing_hub, notice: 'Shipping type was successfully created.' }
+        format.html { redirect_to printing_hub_admin_show_path(@shipping_type.printing_hub), notice: 'Shipping type was successfully created.' }
         format.json { render :show, status: :created, location: @shipping_type }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ShippingTypesController < ApplicationController
   def update
     respond_to do |format|
       if @shipping_type.update(shipping_type_params)
-        format.html { redirect_to @shipping_type, notice: 'Shipping type was successfully updated.' }
+        format.html { redirect_to printing_hub_admin_show_path(@shipping_type.printing_hub), notice: 'Shipping type was successfully updated.' }
         format.json { render :show, status: :ok, location: @shipping_type }
       else
         format.html { render :edit }

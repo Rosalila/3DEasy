@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
+<h1>Your Orders</h1>
 
-<table>
+<table class="ui celled table">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Printing set</th>
-      <th>Order state</th>
+      <th>#</th>
+      <th>State</th>
       <th>Doge address</th>
       <th>Shipping address</th>
       <th>Shipping type</th>
@@ -18,20 +17,13 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.user_id %></td>
-        <td><%= order.printing_set_id %></td>
-        <td><%= order.order_state_id %></td>
+        <td>#<%= order.id %></td>
+        <td><%= order.order_state.name %></td>
         <td><%= order.doge_address %></td>
         <td><%= order.shipping_address %></td>
-        <td><%= order.shipping_type_id %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= order.shipping_type.name %></td>
+        <td><%= link_to 'Show', order, class: 'ui button' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Order', new_order_path %>
