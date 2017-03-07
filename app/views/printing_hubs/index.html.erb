@@ -6,12 +6,15 @@
 	<% @printing_hubs.each do |printing_hub| %>
 
 		<div class="ui card">
-			<div class="image">
-				<img src="<%= printing_hub.image.url %>">
-			</div>
+			 <div class="ui slide masked reveal image">
+				<img src="<%= printing_hub.image.url %>" class="visible content">
+				<% printing_hub.printing_sets do |items| %>
+					<img src="<%= items.image %>" class="hidden content">
+				<% end %>
+  		</div>
 			<div class="content">
-				<a class="header"><%= printing_hub.name %></a>
-				<div class="meta">
+				<a class="header"s><%= printing_hub.name %></a>
+				<div class="meta">	
 				  <span class="date">Joined in <%= printing_hub.created_at.year %></span>
 				</div>
 				<div class="description">
