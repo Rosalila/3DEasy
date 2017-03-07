@@ -59,11 +59,21 @@
         <%= truncate(printing_set.description, :length => 40) %>
       </div>
     </div>
-    <div class="extra content">
+		<div class="extra content">
       <a>
         <i class="bitcoin icon"></i>
         <%= printing_set.doges %> Doges
       </a>
+		</div>
+    <div class="extra content">
+			<span class="left floated like">
+      <i class="edit icon"></i>      	
+				<%= link_to 'Edit', edit_printing_set_path(printing_set) %>
+    	</span>
+			<span class="right floated star">
+      <i class="minus icon"></i>
+      	<%= link_to 'Remove', printing_set_path(printing_set), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+    	</span>
     </div>
   </div>
 

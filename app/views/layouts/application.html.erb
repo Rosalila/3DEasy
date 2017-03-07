@@ -43,7 +43,7 @@
 		  <div class="ui container">
 		    <a href="#" class="header item">
 		      <img class="logo" src="assets/images/logo.png">
-		      Project Name
+		      3DEasy
 		    </a>
 		    <%= link_to 'Home', root_path, class: "item" %>
 			  <% if !current_user %>
@@ -61,7 +61,7 @@
               <%= link_to 'Add your hub', new_printing_hub_path, class: "item" %>
 				    </div>
 				  </div>
-				  <%= link_to destroy_user_session_path, :method => :delete  do %>Sign out<%end%>
+				  <%= link_to destroy_user_session_path, :method => :delete, :class => "item" do %>Sign out<%end%>
 			  <%end%>
 		  </div>
 		</div>
