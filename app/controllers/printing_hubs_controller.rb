@@ -16,6 +16,13 @@ class PrintingHubsController < ApplicationController
     @shipping_type = ShippingType.new
   end
 
+  def admin_show
+    @printing_set = PrintingSet.new
+    @printer = Printer.new
+    @order = Order.new
+    @shipping_type = ShippingType.new
+  end
+
   # GET /printing_hubs/new
   def new
     @printing_hub = PrintingHub.new
