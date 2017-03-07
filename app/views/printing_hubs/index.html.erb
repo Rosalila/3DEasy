@@ -6,12 +6,15 @@
 	<% @printing_hubs.each do |printing_hub| %>
 
 		<div class="ui card">
-			<div class="image">
-				<img src="<%= printing_hub.image.url %>">
-			</div>
+			 <div class="ui slide masked reveal image">
+				<img src="<%= printing_hub.image.url %>" class="visible content">
+				<% printing_hub.printing_sets.each do |items| %>
+					<img src="<%= items.image.url %>" class="hidden content">
+				<% end %>
+  		</div>
 			<div class="content">
-				<a class="header"><%= printing_hub.name %></a>
-				<div class="meta">
+				<%= link_to printing_hub.name, printing_hub_path(printing_hub), :class => 'header' %>
+				<div class="meta">	
 				  <span class="date">Joined in <%= printing_hub.created_at.year %></span>
 				</div>
 				<div class="description">
@@ -21,7 +24,7 @@
 			<div class="extra content">
 				<a>
 				  <i class="shopping basket icon"></i>
-				  <%= printing_hub.printing_sets.count %> Items
+					<%= link_to "#{printing_hub.printing_sets.count} Items", printing_hub_path(printing_hub)%>
 				</a>
 			</div>
 		</div>

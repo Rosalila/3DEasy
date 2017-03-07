@@ -2,9 +2,7 @@
 
 <%= render 'add_printing_set_modal' %>
 
-<h2>Items:</h2>
-
-<table class="ui celled table">
+<!--<table class="ui celled table">
   <thead>
     <tr>
 		  <th>Image</th>
@@ -28,7 +26,64 @@
 		  </tr>
 		<% end %>
   </tbody>
-</table>
+</table>-->
 
-<input type="button" class="ui button" value="New printing set" onClick="$('.ui.printing_set.modal').modal('show');"/>
+<input type="button" class="positive ui button" value="New printing set" onClick="$('.ui.printing_set.modal').modal('show');"/>
 
+<h4 class="ui horizontal divider header">
+  <i class="list icon"></i>
+  Items
+</h4>
+
+<div class="ui special cards">
+
+	<% @printing_hub.printing_sets.each do |printing_set| %>
+
+  <div class="card">
+    <div class="blurring dimmable image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+            <div class="ui inverted button">Add To Card</div>
+          </div>
+        </div>
+      </div>
+      <img src="<%= printing_set.image %>">
+    </div>
+    <div class="content">
+      <a class="header"> <%= printing_set.name %></a>
+      <div class="meta">
+        <span class="date">Created at <%= printing_set.created_at.strftime('%v') %></span>
+      </div>
+			<div class="description">
+        <%= truncate(printing_set.description, :length => 40) %>
+      </div>
+    </div>
+		<div class="extra content">
+      <a>
+        <i class="bitcoin icon"></i>
+        <%= printing_set.doges %> Doges
+      </a>
+		</div>
+    <div class="extra content">
+			<span class="left floated like">
+      <i class="edit icon"></i>      	
+				<%= link_to 'Edit', edit_printing_set_path(printing_set) %>
+    	</span>
+			<span class="right floated star">
+      <i class="minus icon"></i>
+      	<%= link_to 'Remove', printing_set_path(printing_set), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+    	</span>
+    </div>
+  </div>
+
+	<% end %>
+</div>
+
+<script>
+
+$('.special.cards .image').dimmer({
+  on: 'hover'
+});
+
+</script>

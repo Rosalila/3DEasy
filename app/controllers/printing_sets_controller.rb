@@ -48,7 +48,7 @@ class PrintingSetsController < ApplicationController
   def update
     respond_to do |format|
       if @printing_set.update(printing_set_params)
-        format.html { redirect_to @printing_set, notice: 'Printing set was successfully updated.' }
+        format.html { redirect_to printing_hub_path(@printing_set.printing_hub_id), notice: 'Printing set was successfully updated.' }
         format.json { render :show, status: :ok, location: @printing_set }
       else
         format.html { render :edit }
@@ -60,9 +60,10 @@ class PrintingSetsController < ApplicationController
   # DELETE /printing_sets/1
   # DELETE /printing_sets/1.json
   def destroy
+    hub_id = @printing_set.printing_hub_id
     @printing_set.destroy
     respond_to do |format|
-      format.html { redirect_to printing_sets_url, notice: 'Printing set was successfully destroyed.' }
+      format.html { redirect_to printing_hub_path(hub_id), notice: 'Printing set was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
