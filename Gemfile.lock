@@ -61,6 +61,7 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    dogecoin_client (0.5.0)
     domain_name (0.5.20170223)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
@@ -190,6 +191,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   devise
+  dogecoin_client
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

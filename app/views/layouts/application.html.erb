@@ -45,6 +45,10 @@
 		      <img class="logo" src="/img/logo.png">
 		      3DEasy
 		    </a>
+        <div class="item">
+          <% client = DogecoinClient.new %>
+          <p>Dogecoin is <%= client.valid? ? "up" : "down" %></p>
+        </div>
 		    <%= link_to 'Home', root_path, class: "item" %>
 			  <% if !current_user %>
 				  <%= link_to "Sign in", "/users/sign_in", class: "item" %>

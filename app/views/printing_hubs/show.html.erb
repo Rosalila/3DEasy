@@ -2,7 +2,9 @@
 
 <%= render 'add_printing_set_modal' %>
 
+<!--
 <input type="button" class="positive ui button" value="New printing set" onClick="$('.ui.printing_set.modal').modal('show');"/>
+-->
 
 <h4 class="ui horizontal divider header">
   <i class="list icon"></i>
@@ -42,6 +44,7 @@
         Ð <%= printing_set.doges %>
       </a>
 		</div>
+<!--
     <div class="extra content">
 			<span class="left floated like">
       <i class="edit icon"></i>      	
@@ -52,6 +55,7 @@
       	<%= link_to 'Remove', printing_set_path(printing_set), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
     	</span>
     </div>
+-->
   </div>
 
 	<% end %>
