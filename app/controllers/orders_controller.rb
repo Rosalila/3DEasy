@@ -2,8 +2,16 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def checkout
+    if !current_user
+      return
+    end
+
     @shipping_type = ShippingType.find_by_id(params[:shipping_type_id])
     @printing_hub = PrintingHub.find_by_id(params[:printing_hub_id])
+
+    if !@printing_hub.shipping_types.exists?(id: @shipping_type.id)
+      return
+    end
 
     @order = Order.new
     @order.user_id = current_user.id
@@ -25,6 +33,12 @@ class OrdersController < ApplicationController
 		    order_item.order_id = @order.id
 		    order_item.printing_set_id = cart_item.printing_set_id
 		    order_item.amount = cart_item.amount
+
+        if !@printing_hub.has_printing_set order_item.printing_set
+          @order.destroy
+          return
+        end
+
 		    order_item.save
         cart_item.destroy
         @order.doges += order_item.amount * order_item.printing_set.doges + @shipping_type.doges
@@ -37,6 +51,10 @@ class OrdersController < ApplicationController
   end
 
   def cart
+    if !current_user
+      return
+    end
+
     @printing_hubs_cart_items = {}
     current_user.cart_items.each do |cart_item|
       if @printing_hubs_cart_items[cart_item.printing_set.printing_hub.id] == nil
@@ -51,6 +69,10 @@ class OrdersController < ApplicationController
   end
 
   def printing_hub_cart
+    if !current_user
+      return
+    end
+
     @printing_hub = PrintingHub.find_by_id(params[:id])
     @shipping_type = @printing_hub.shipping_types.first
     if params[:shipping_type] != nil
@@ -68,7 +90,16 @@ class OrdersController < ApplicationController
   end
 
   def delete_from_cart
+    if !current_user
+      return
+    end
+
     @cart_item = CartItem.find_by_id(params[:id])
+
+		if !current_user.has_cart_item @cart_item
+      return
+    end
+
     @cart_item.destroy
     shipping_type_id = nil
     if params[:shipping_type]
@@ -81,7 +112,16 @@ class OrdersController < ApplicationController
   end
 
   def update_item_amount
+    if !current_user
+      return
+    end
+
     @cart_item = CartItem.find_by_id(params[:item_id])
+
+		if !current_user.has_cart_item @cart_item
+      return
+    end
+
     @cart_item.amount = params[:item][:amount]
     @cart_item.save
     shipping_type_id = nil
@@ -91,10 +131,15 @@ class OrdersController < ApplicationController
     if params[:shipping_type_id]
       shipping_type_id = params[:shipping_type_id]
     end
+
     redirect_to printing_hub_cart_path(@cart_item.printing_set.printing_hub, shipping_type_id: shipping_type_id), notice: 'The item was updated.'
   end
 
   def add_to_cart
+    if !current_user
+      return
+    end
+
     @printing_set = PrintingSet.find_by_id(params[:printing_set_id])
 
     if CartItem.exists?({ user_id: current_user.id, printing_set_id: @printing_set.id })
@@ -129,6 +174,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    return
     @order = Order.new(order_params)
 
     @order.user_id = current_user.id
@@ -149,6 +195,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    return
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
@@ -163,6 +210,7 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    return
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }

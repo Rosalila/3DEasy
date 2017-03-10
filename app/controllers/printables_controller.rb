@@ -24,6 +24,7 @@ class PrintablesController < ApplicationController
   # POST /printables
   # POST /printables.json
   def create
+    return
     @printable = Printable.new(printable_params)
 
     respond_to do |format|
@@ -40,6 +41,14 @@ class PrintablesController < ApplicationController
   # PATCH/PUT /printables/1
   # PATCH/PUT /printables/1.json
   def update
+    if !current_user
+      return
+    end
+
+    if !current_user.has_printable @printable
+      return
+    end
+
     respond_to do |format|
       if @printable.update(printable_params)
         format.html { redirect_to @printable, notice: 'Printable was successfully updated.' }
@@ -54,6 +63,8 @@ class PrintablesController < ApplicationController
   # DELETE /printables/1
   # DELETE /printables/1.json
   def destroy
+    return
+
     @printable.destroy
     respond_to do |format|
       format.html { redirect_to printables_url, notice: 'Printable was successfully destroyed.' }

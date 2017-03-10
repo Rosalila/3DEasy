@@ -54,6 +54,7 @@ class ShippingTypesController < ApplicationController
   # DELETE /shipping_types/1
   # DELETE /shipping_types/1.json
   def destroy
+    return
     @shipping_type.destroy
     respond_to do |format|
       format.html { redirect_to shipping_types_url, notice: 'Shipping type was successfully destroyed.' }

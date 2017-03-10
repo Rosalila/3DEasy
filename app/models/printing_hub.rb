@@ -8,4 +8,8 @@ class PrintingHub < ApplicationRecord
   has_many :orders, through: :printing_sets
   has_many :cart_items
   has_many :orders
+
+  def has_printing_set printing_set
+    return printing_sets.exists?(id: printing_set)
+  end
 end

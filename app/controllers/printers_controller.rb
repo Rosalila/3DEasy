@@ -4,12 +4,19 @@ class PrintersController < ApplicationController
   # GET /printers
   # GET /printers.json
   def index
+    redirect_to "/"
+    return
     @printers = Printer.all
   end
 
   # GET /printers/1
   # GET /printers/1.json
   def show
+    if !current_user.has_printer(@printer)
+      @printer=nil
+      redirect_to "/"
+      return
+    end
   end
 
   # GET /printers/new
@@ -19,6 +26,11 @@ class PrintersController < ApplicationController
 
   # GET /printers/1/edit
   def edit
+    if !current_user.has_printer(@printer)
+      @printer=nil
+      redirect_to "/"
+      return
+    end
   end
 
   # POST /printers
@@ -26,7 +38,7 @@ class PrintersController < ApplicationController
   def create
     @printer = Printer.new(printer_params)
 
-    if UserInPrintingHub.find_by(user_id: current_user.id, printing_hub_id: @printer.printing_hub_id) == nil
+    if !current_user.has_printing_hub(@printer.printing_hub)
       return
     end
 
@@ -44,6 +56,11 @@ class PrintersController < ApplicationController
   # PATCH/PUT /printers/1
   # PATCH/PUT /printers/1.json
   def update
+
+    if !current_user.has_printing_hub(@printer.printing_hub)
+      return
+    end
+
     respond_to do |format|
       if @printer.update(printer_params)
         format.html { redirect_to printing_hub_admin_show_path(@printer.printing_hub), notice: 'Printer was successfully updated.' }
@@ -58,6 +75,10 @@ class PrintersController < ApplicationController
   # DELETE /printers/1
   # DELETE /printers/1.json
   def destroy
+    return
+    if !current_user.has_printing_hub(@printer.printing_hub)
+      return
+    end
     @printer.destroy
     respond_to do |format|
       format.html { redirect_to printers_url, notice: 'Printer was successfully destroyed.' }

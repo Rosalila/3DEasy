@@ -3,6 +3,10 @@ class OctoprintController < ApplicationController
     @printable = Printable.find_by_id(params[:printable_id])
     @printer = Printer.find_by_id(params[:printing_hub][:printer_id])
 
+    if !current_user.has_printer @printer
+      return
+    end
+
     #Download gcode from git
     IO.copy_stream(open('https://raw.githubusercontent.com/'+@printable.github_repo+'/master/toolpath.gcode'),
 			'public/gcode_temp/'+current_user.id.to_s+'.gcode')

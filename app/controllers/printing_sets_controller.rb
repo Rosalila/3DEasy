@@ -25,10 +25,13 @@ class PrintingSetsController < ApplicationController
   # POST /printing_sets
   # POST /printing_sets.json
   def create
-
     @printing_set = PrintingSet.new(printing_set_params)
 
-    if UserInPrintingHub.find_by(user_id: current_user.id, printing_hub_id: @printing_set.printing_hub_id)== nil
+		if !current_user.has_printing_set @printing_set
+      return
+    end
+
+    if !current_user.has_printing_hub(@printing_set.printing_hub)
       return
     end
 
@@ -46,6 +49,10 @@ class PrintingSetsController < ApplicationController
   # PATCH/PUT /printing_sets/1
   # PATCH/PUT /printing_sets/1.json
   def update
+		if !current_user.has_printing_set @printing_set
+      return
+    end
+
     respond_to do |format|
       if @printing_set.update(printing_set_params)
         format.html { redirect_to @printing_set, notice: 'Printing set was successfully updated.' }
@@ -60,6 +67,7 @@ class PrintingSetsController < ApplicationController
   # DELETE /printing_sets/1
   # DELETE /printing_sets/1.json
   def destroy
+    return
     hub_id = @printing_set.printing_hub_id
     @printing_set.destroy
     respond_to do |format|

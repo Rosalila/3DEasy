@@ -18,6 +18,11 @@ class PrintingHubsController < ApplicationController
 
   def admin_show
     @printing_hub = PrintingHub.find_by_id(params[:id])
+
+    if !current_user.has_printing_hub(@printing_hub)
+      return
+    end
+
     @printing_set = PrintingSet.new
     @printer = Printer.new
     @order = Order.new
@@ -77,6 +82,7 @@ class PrintingHubsController < ApplicationController
   # DELETE /printing_hubs/1
   # DELETE /printing_hubs/1.json
   def destroy
+    return
     @printing_hub.destroy
     respond_to do |format|
       format.html { redirect_to printing_hubs_url, notice: 'Printing hub was successfully destroyed.' }
