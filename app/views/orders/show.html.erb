@@ -32,6 +32,11 @@
   <%= @order.shipping_type.name %>
 </p>
 
+<div id="qrcode"></div>
+<script type="text/javascript">
+new QRCode(document.getElementById("qrcode"), "<%= @order.doge_address %>");
+</script>
+
 <% items_amount = 0 %>
 
 <table class="ui celled table">
