@@ -12,7 +12,10 @@ class OrdersController < ApplicationController
     @order.shipping_type_id = @shipping_type.id
     @order.printing_hub_id = @printing_hub.id
     @order.doges = 0
-    #TODO Dogecoin @order.doge_address = ...
+    client = DogecoinClient.new
+    if client.valid?
+      @order.doge_address = client.get_new_address
+    end
 
     @order.save
 
