@@ -27,10 +27,6 @@ class PrintingSetsController < ApplicationController
   def create
     @printing_set = PrintingSet.new(printing_set_params)
 
-		if !current_user.has_printing_set @printing_set
-      return
-    end
-
     if !current_user.has_printing_hub(@printing_set.printing_hub)
       return
     end
