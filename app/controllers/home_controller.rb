@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
-  def home
+  def index
+    if current_user
+      redirect_to printing_sets_path
+    end
   end
 end

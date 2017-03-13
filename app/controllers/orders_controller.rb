@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
 
   def checkout
     if !current_user
+      redirect_to new_user_session_path
       return
     end
 
@@ -52,6 +53,7 @@ class OrdersController < ApplicationController
 
   def cart
     if !current_user
+      redirect_to new_user_session_path
       return
     end
 
@@ -70,6 +72,7 @@ class OrdersController < ApplicationController
 
   def printing_hub_cart
     if !current_user
+      redirect_to new_user_session_path
       return
     end
 
@@ -91,6 +94,7 @@ class OrdersController < ApplicationController
 
   def delete_from_cart
     if !current_user
+      redirect_to new_user_session_path
       return
     end
 
@@ -113,6 +117,7 @@ class OrdersController < ApplicationController
 
   def update_item_amount
     if !current_user
+      redirect_to new_user_session_path
       return
     end
 
@@ -137,6 +142,7 @@ class OrdersController < ApplicationController
 
   def add_to_cart
     if !current_user
+      redirect_to new_user_session_path
       return
     end
 

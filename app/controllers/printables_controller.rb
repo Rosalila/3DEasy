@@ -42,6 +42,7 @@ class PrintablesController < ApplicationController
   # PATCH/PUT /printables/1.json
   def update
     if !current_user
+      redirect_to new_user_session_path
       return
     end
 

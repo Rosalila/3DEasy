@@ -45,32 +45,29 @@
 
     <div class="ui fixed inverted menu">
 		  <div class="ui container">
-		    <a href="#" class="header item">
+		    <a href="/" class="header item">
 		      <img class="logo" src="/img/logo.png">
-		      3DEasy
 		    </a>
-        <div class="item">
-          <% client = DogecoinClient.new %>
-          <p>Dogecoin is <%= client.valid? ? "up" : "down" %></p>
-        </div>
 		    <%= link_to 'Home', root_path, class: "item" %>
 			  <% if !current_user %>
 				  <%= link_to "Sign in", "/users/sign_in", class: "item" %>
 			  <% else %>
-				  <div class="ui simple dropdown item">
-		        Hubs <i class="dropdown icon"></i>
-				    <div class="menu">
-		          <div class="divider"></div>
-				      <div class="header">My hubs</div>
-              <% current_user.printing_hubs.each do |printing_hub| %>
-                <%= link_to printing_hub.name, "/printing_hubs/admin/"+printing_hub.id.to_s, class: "item" %>
-              <% end %>
-		          <div class="divider"></div>
-              <%= link_to 'Add your hub', new_printing_hub_path, class: "item" %>
-				    </div>
-				  </div>
-    		  <%= link_to cart_path, :class => "item" do %>Cart<%end%>
-    		  <%= link_to orders_path, :class => "item" do %>Orders<%end%>
+          <% if current_user.printing_hubs.size > 0%>
+						<div class="ui simple dropdown item">
+				      Hubs <i class="dropdown icon"></i>
+						  <div class="menu">
+				        <div class="divider"></div>
+						    <div class="header">My hubs</div>
+		            <% current_user.printing_hubs.each do |printing_hub| %>
+		              <%= link_to printing_hub.name, "/printing_hubs/admin/"+printing_hub.id.to_s, class: "item" %>
+		            <% end %>
+				        <div class="divider"></div>
+		            <%= link_to 'Add your hub', new_printing_hub_path, class: "item" %>
+						  </div>
+						</div>
+					<% end %>
+    		  <%= link_to 'Your Cart ('+current_user.cart_items.size.to_s+')', cart_path, class: 'item' %>
+    		  <%= link_to orders_path, :class => "item" do %>Your Orders<%end%>
     		  <%= link_to destroy_user_session_path, :method => :delete, :class => "item" do %>Sign out<%end%>
 			  <%end%>
 		  </div>

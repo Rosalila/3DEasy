@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   resources :printing_hubs
   #devise_for :users
   resources :printers
-  root "home#index"
 
   get "home" => "home#index", as: "home"
+
+  root "home#index"
+
   get "print" => "octoprint#print", as: "print"
   get '/printing_hubs/admin/:id', to: 'printing_hubs#admin_show', as: "printing_hub_admin_show"
   get '/cart', to: 'orders#cart', as: "cart"
