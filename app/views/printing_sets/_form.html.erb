@@ -17,9 +17,22 @@
   </div>
 
   <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
     <%= f.label :doges %>
     <%= f.text_field :doges %>
   </div>
+
+
+	<div>
+		<label for="image" class="ui icon button">
+			  <i class="file icon"></i>
+			  Open File</label>
+		<%= f.file_field :image, style: "display:none", id: "image" %>
+	</div>
 
   <div class="actions">
     <%= f.submit "Submit", class: "ui button" %>

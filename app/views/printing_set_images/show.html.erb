@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Printing set:</strong>
+  <%= @printing_set_image.printing_set_id %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @printing_set_image.image %>
+</p>
+
+<%= link_to 'Edit', edit_printing_set_image_path(@printing_set_image) %> |
+<%= link_to 'Back', printing_set_images_path %>

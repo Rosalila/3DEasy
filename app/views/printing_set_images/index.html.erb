@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Printing Set Images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Printing set</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @printing_set_images.each do |printing_set_image| %>
+      <tr>
+        <td><%= printing_set_image.printing_set_id %></td>
+        <td><%= printing_set_image.image %></td>
+        <td><%= link_to 'Show', printing_set_image %></td>
+        <td><%= link_to 'Edit', edit_printing_set_image_path(printing_set_image) %></td>
+        <td><%= link_to 'Destroy', printing_set_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Printing Set Image', new_printing_set_image_path %>

@@ -4,10 +4,6 @@
 <%= render 'add_printing_set_modal' %>
 <%= render 'add_printer_modal' %>
 
-<% @printing_hub.printing_sets.each do |printing_set| %>
-  <%= render 'add_order_modal', locals: {printing_set_id: printing_set.id} %>
-<% end %>
-
 <h1><%= @printing_hub.name %></h1>
 <%= link_to 'Watch', @printing_hub, class: "ui button" %>
 <%= link_to 'Edit', edit_printing_hub_path(@printing_hub), class: "ui button" %>
@@ -106,7 +102,6 @@
 		    <td><%= printing_set.doges %></td>
 		    <td><%= printing_set.printables.size %></td>
         <td>
-          <input type="button" class="ui button" value="Order" onClick="$('.ui.order_<%= printing_set.id %>.modal').modal('show');"/>
           <%= link_to "Show", printing_set, class: "ui button" %>
         </td>
 		  </tr>

@@ -1,0 +1,27 @@
+<%= form_for(printing_set_image) do |f| %>
+  <% if printing_set_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(printing_set_image.errors.count, "error") %> prohibited this printing_set_image from being saved:</h2>
+
+      <ul>
+      <% printing_set_image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :printing_set_id %>
+    <%= f.number_field :printing_set_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.text_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

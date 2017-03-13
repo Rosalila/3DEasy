@@ -1,0 +1,42 @@
+<div class="ui printing_set_image modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Add image
+  </div>
+  <div class="image content">
+    <div class="description">
+
+			<%= form_for @printing_set_image, html: {class: 'ui form' } do |f| %>
+				<% if @printing_set.errors.any? %>
+					<div id="error_explanation">
+						<h2><%= pluralize(@printing_set_image.errors.count, "error") %> prohibited this printing_set_image from being saved:</h2>
+
+						<ul>
+						<% @printing_set_image.errors.full_messages.each do |message| %>
+						  <li><%= message %></li>
+						<% end %>
+						</ul>
+					</div>
+				<% end %>
+
+				<div class="field">
+					<%= f.hidden_field :printing_set_id, value: @printing_set.id %>
+				</div>
+
+				<div>
+					<label for="image" class="ui icon button">
+						  <i class="file icon"></i>
+						  Open File</label>
+					<%= f.file_field :image, style: "display:none", id: "image" %>
+				</div>
+
+        <br>
+
+				<div class="actions">
+					<%= f.submit "Create", class: "ui button" %>
+				</div>
+			<% end %>
+
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@
 
 <% if @user_has_printing_set %>
 	<%= render 'add_printable_modal' %>
+	<%= render 'add_printing_set_image_modal' %>
 
 	<% @printing_set.printables.each do |printable| %>
   	<%= render 'print_modal', locals: {printable_id: printable.id} %>
@@ -31,8 +32,9 @@
     <div class="glide__wrapper">
         <ul class="glide__track">
             <li class="glide__slide"><img src="<%= @printing_set.image %>"/></li>
-            <li class="glide__slide"><img src="<%= @printing_set.image %>"/></li>
-            <li class="glide__slide"><img src="<%= @printing_set.image %>"/></li>
+            <% @printing_set.printing_set_images.each do |printing_set_image| %>
+              <li class="glide__slide"><img src="<%= printing_set_image.image %>"/></li>
+            <% end %>
         </ul>
     </div>
 
@@ -44,8 +46,7 @@
     $("#Glide").glide({
         type: "carousel",
         autoheight: true,
-				paddings: -1,
-        centered: true
+				paddings: -1
     });
 </script>
 
@@ -71,4 +72,22 @@
 		</tbody>
 	</table>
   <input type="button" class="ui button" value="New printable" onClick="$('.ui.printable.modal').modal('show');"/>
+
+	<table class="ui celled table">
+		<thead>
+		  <tr>
+				<th>Image</th>
+				<th></th>
+		  </tr>
+		</thead>
+		<tbody>
+			<% @printing_set.printing_set_images.each do |printing_set_image| %>
+				<tr>
+				  <td><img width="150" src="<%= printing_set_image.image %>"/></td>
+				  <td><%= link_to 'Destroy', printing_set_image, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+  <input type="button" class="ui button" value="New image" onClick="$('.ui.printing_set_image.modal').modal('show');"/>
 <% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :printing_set_images
   resources :shipping_types
   resources :orders
   resources :printables
