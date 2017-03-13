@@ -11,6 +11,7 @@ class PrintingSetsController < ApplicationController
   # GET /printing_sets/1.json
   def show
     @printable = Printable.new
+    @user_has_printing_set = current_user and current_user.user_has_printing_set @printing_set
   end
 
   # GET /printing_sets/new

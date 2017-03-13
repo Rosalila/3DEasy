@@ -1,31 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Printing Sets</h1>
+<h4 class="ui horizontal divider header">
+  <i class="list icon"></i>
+  Items
+</h4>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Printing hub</th>
-      <th>Doges</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="ui special cards">
 
-  <tbody>
-    <% @printing_sets.each do |printing_set| %>
-      <tr>
-        <td><%= printing_set.name %></td>
-        <td><%= printing_set.printing_hub_id %></td>
-        <td><%= printing_set.doges %></td>
-        <td><%= link_to 'Show', printing_set %></td>
-        <td><%= link_to 'Edit', edit_printing_set_path(printing_set) %></td>
-        <td><%= link_to 'Destroy', printing_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<% @printing_sets.each do |printing_set| %>
 
-<br>
+  <div class="card">
+    <div class="blurring dimmable image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+            <%= form_tag("/add_to_cart", method: "post") do %>
+              <input type="hidden" value="<%=printing_set.id%>" name="printing_set_id"/>
+              <input type="submit" value="Add To Card" class="ui inverted button"/>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <img src="<%= printing_set.image %>">
+    </div>
+    <div class="content">
+      <%= link_to printing_set.name, printing_set, class: 'header' %>
+      <div class="meta">
+        <span class="date">Created at <%= printing_set.created_at.strftime('%v') %></span>
+      </div>
+			<div class="description">
+        <%= truncate(printing_set.description, :length => 40) %>
+      </div>
+    </div>
+		<div class="extra content">
+      <a>
+        <!--<i class="bitcoin icon"></i>-->
+        Ð <%= printing_set.doges %>
+      </a>
+		</div>
+  </div>
 
-<%= link_to 'New Printing Set', new_printing_set_path %>
+	<% end %>
+</div>
+
+<script>
+
+$('.special.cards .image').dimmer({
+  on: 'hover'
+});
+
+</script>

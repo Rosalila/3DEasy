@@ -1,44 +1,74 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'add_printable_modal' %>
+<% if @user_has_printing_set %>
+	<%= render 'add_printable_modal' %>
 
-<% @printing_set.printables.each do |printable| %>
-  <%= render 'print_modal', locals: {printable_id: printable.id} %>
+	<% @printing_set.printables.each do |printable| %>
+  	<%= render 'print_modal', locals: {printable_id: printable.id} %>
+	<% end %>
 <% end %>
 
 <h1><%= @printing_set.name %></h1>
-
-<%= link_to 'Edit', edit_printing_set_path(@printing_set), class: "ui button" %>
+<% if @user_has_printing_set %>
+	<%= link_to 'Edit', edit_printing_set_path(@printing_set), class: "ui button" %>
+<% end %>
 
 <p>
-  <strong>Printing hub:</strong>
+  <strong>By:</strong>
   <%= link_to @printing_set.printing_hub.name, @printing_set.printing_hub %>
 </p>
-
 <p>
-  <strong>Doges:</strong>
-  <%= @printing_set.doges %>
+  <strong>Price:</strong>
+  <%= @printing_set.doges %>Ð
 </p>
 
-<h2>Printables</h2>
+<%= form_tag("/add_to_cart", method: "post") do %>
+  <input type="hidden" value="<%=@printing_set.id%>" name="printing_set_id"/>
+  <input type="submit" value="Add To Card" class="ui button"/>
+<% end %>
 
-<table class="ui celled table">
-  <thead>
-    <tr>
-		  <th>Image</th>
-		  <th>Github repo</th>
-		  <th></th>
-    </tr>
-  </thead>
-  <tbody>
-		<% @printing_set.printables.each do |printable| %>
+<div id="Glide" class="glide">
+    <div class="glide__wrapper">
+        <ul class="glide__track">
+            <li class="glide__slide"><img src="<%= @printing_set.image %>"/></li>
+            <li class="glide__slide"><img src="<%= @printing_set.image %>"/></li>
+            <li class="glide__slide"><img src="<%= @printing_set.image %>"/></li>
+        </ul>
+    </div>
+
+    <div class="glide__bullets"></div>
+
+</div>
+
+<script>
+    $("#Glide").glide({
+        type: "carousel",
+        autoheight: true,
+				paddings: -1,
+        centered: true
+    });
+</script>
+
+<% if @user_has_printing_set %>
+	<h2>Printables</h2>
+
+	<table class="ui celled table">
+		<thead>
 		  <tr>
-		    <td><img src="https://raw.githubusercontent.com/<%= printable.github_repo %>/master/image.png" /></td>
-		    <td><%= printable.github_repo %></td>
-        <td><input type="button" class="ui button" value="Print" onClick="$('.ui.print_<%=printable.id%>.modal').modal('show');"/></td>
+				<th>Image</th>
+				<th>Github repo</th>
+				<th></th>
 		  </tr>
-		<% end %>
-  </tbody>
-</table>
-
-<input type="button" class="ui button" value="New printable" onClick="$('.ui.printable.modal').modal('show');"/>
+		</thead>
+		<tbody>
+			<% @printing_set.printables.each do |printable| %>
+				<tr>
+				  <td><img src="https://raw.githubusercontent.com/<%= printable.github_repo %>/master/image.png" /></td>
+				  <td><%= printable.github_repo %></td>
+		      <td><input type="button" class="ui button" value="Print" onClick="$('.ui.print_<%=printable.id%>.modal').modal('show');"/></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+  <input type="button" class="ui button" value="New printable" onClick="$('.ui.printable.modal').modal('show');"/>
+<% end %>
