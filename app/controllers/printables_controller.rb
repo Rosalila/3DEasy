@@ -24,8 +24,11 @@ class PrintablesController < ApplicationController
   # POST /printables
   # POST /printables.json
   def create
-    return
     @printable = Printable.new(printable_params)
+
+    if !current_user.has_printing_set @printable.printing_set
+      return
+    end
 
     respond_to do |format|
       if @printable.save
