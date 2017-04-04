@@ -66,6 +66,7 @@
 				<tr>
 				  <td><img src="https://raw.githubusercontent.com/<%= printable.github_repo %>/master/image.png" /></td>
 				  <td><%= printable.github_repo %></td>
+				  <td><a class="ui button" href="https://raw.githubusercontent.com/<%= printable.github_repo %>/master/toolpath.gcode">Download<a/></td>
 		      <td><input type="button" class="ui button" value="Print" onClick="$('.ui.print_<%=printable.id%>.modal').modal('show');"/></td>
 				</tr>
 			<% end %>
