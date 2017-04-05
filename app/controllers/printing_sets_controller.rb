@@ -4,7 +4,7 @@ class PrintingSetsController < ApplicationController
   # GET /printing_sets
   # GET /printing_sets.json
   def index
-    @printing_sets = PrintingSet.all
+    @printing_sets = PrintingSet.all.reverse
   end
 
   # GET /printing_sets/1

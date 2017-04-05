@@ -15,7 +15,7 @@ class PrintingHubsController < ApplicationController
     @printer = Printer.new
     @order = Order.new
     @shipping_type = ShippingType.new
-    @printing_sets = @printing_hub.printing_sets
+    @printing_sets = @printing_hub.printing_sets.reverse
   end
 
   def admin_show
