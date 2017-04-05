@@ -11,9 +11,11 @@ class PrintingHubsController < ApplicationController
   # GET /printing_hubs/1.json
   def show
     @printing_set = PrintingSet.new
+    @printing_sets = PrintingSet.new
     @printer = Printer.new
     @order = Order.new
     @shipping_type = ShippingType.new
+    @printing_sets = @printing_hub.printing_sets
   end
 
   def admin_show

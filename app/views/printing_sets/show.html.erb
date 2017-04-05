@@ -25,7 +25,7 @@
 
 <%= form_tag("/add_to_cart", method: "post") do %>
   <input type="hidden" value="<%=@printing_set.id%>" name="printing_set_id"/>
-  <input type="submit" value="Add To Card" class="ui button"/>
+  <input type="submit" value="Add To Cart" class="ui button"/>
 <% end %>
 
 <div id="Glide" class="glide">
@@ -58,6 +58,7 @@
 		  <tr>
 				<th>Image</th>
 				<th>Github repo</th>
+				<th></th>
 				<th></th>
 		  </tr>
 		</thead>

@@ -1,0 +1,52 @@
+<div class="ui special cards">
+
+	<% @printing_sets.each do |printing_set| %>
+
+  <div class="card">
+    <div class="blurring dimmable image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+            <%= form_tag("/add_to_cart", method: "post") do %>
+              <input type="hidden" value="<%=printing_set.id%>" name="printing_set_id"/>
+              <input type="submit" value="Add To Cart" class="ui inverted button"/>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <img src="<%= printing_set.image %>">
+    </div>
+    <div class="content">
+      <%= link_to printing_set.name, printing_set, class: 'header' %>
+      <div class="meta">
+        <span class="date">Created at <%= printing_set.created_at.strftime('%v') %></span>
+      </div>
+			<div class="description">
+        <%= truncate(printing_set.description, :length => 40) %>
+      </div>
+    </div>
+		<div class="extra content">
+      <span class="right floated" id="icon">
+        <a href="<%= printing_set_path(printing_set) %>">
+          <i class="image outline icon"></i>
+        </a>
+      </span>
+      Ð <%= printing_set.doges %> + Shipping
+		</div>
+  </div>
+
+	<% end %>
+</div>
+
+<script>
+
+$('.special.cards .dimmable').dimmer({
+  on: 'hover'
+});
+
+$('#icon').hover(function(){
+    $(this).transition('jiggle');
+}, function(){});
+
+
+</script>
