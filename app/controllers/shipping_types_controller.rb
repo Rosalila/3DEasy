@@ -19,6 +19,9 @@ class ShippingTypesController < ApplicationController
 
   # GET /shipping_types/1/edit
   def edit
+		if !current_user.has_shipping_type @shipping_type
+      return
+    end
   end
 
   # POST /shipping_types
@@ -40,6 +43,10 @@ class ShippingTypesController < ApplicationController
   # PATCH/PUT /shipping_types/1
   # PATCH/PUT /shipping_types/1.json
   def update
+		if !current_user.has_shipping_type @shipping_type
+      return
+    end
+
     respond_to do |format|
       if @shipping_type.update(shipping_type_params)
         format.html { redirect_to printing_hub_admin_show_path(@shipping_type.printing_hub), notice: 'Shipping type was successfully updated.' }

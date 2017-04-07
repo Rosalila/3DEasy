@@ -33,6 +33,7 @@
     <tr>
 		  <th>Name</th>
 		  <th>Doges</th>
+		  <th></th>
     </tr>
   </thead>
   <tbody>
@@ -40,6 +41,7 @@
 		  <tr>
 		    <td><%= shipping_type.name %></td>
 		    <td><%= shipping_type.doges %></td>
+		    <td><%= link_to 'Edit', edit_shipping_type_path(shipping_type), class: 'ui button' %></td>
 		  </tr>
 		<% end %>
   </tbody>
