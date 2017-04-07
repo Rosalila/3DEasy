@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
 
 		    order_item.save
         cart_item.destroy
-        @order.doges += order_item.amount * order_item.printing_set.doges * @discount_multiplier + @shipping_type.doges
+        @order.doges += order_item.amount * (order_item.printing_set.doges * @discount_multiplier + @shipping_type.doges)
       end
     end
 
