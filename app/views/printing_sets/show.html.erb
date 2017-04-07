@@ -14,11 +14,19 @@
 	<%= link_to 'Edit', edit_printing_set_path(@printing_set), class: "ui button" %>
 <% end %>
 
-<p><%= @printing_set.description %>
+<% if @discount_multiplier != 1 %>
+  <h3><%= @discount %>% Off!</h3>
+<% end %>
 
-<p>
+<p><%= @printing_set.description %><p>
   <strong>Price:</strong>
-  <%= @printing_set.doges %>Ð + Shipping
+
+	<% if @discount_multiplier == 1 %>
+	  Ð <%= printing_set.doges %> + Shipping
+	<% else %>
+	  <strike>Ð <%= @printing_set.doges %> + Shipping</strike>
+	  <br>	  Ð <%= @printing_set.doges * @discount_multiplier %> + Shipping
+	<% end %>
 </p>
 
 <%= form_tag("/add_to_cart", method: "post") do %>

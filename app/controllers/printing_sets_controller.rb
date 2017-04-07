@@ -13,6 +13,9 @@ class PrintingSetsController < ApplicationController
     @printable = Printable.new
     @printing_set_image = PrintingSetImage.new
     @user_has_printing_set = (current_user and current_user.has_printing_set @printing_set)
+    @printing_hub = @printing_set.printing_hub
+    @discount = @printing_hub.discount
+    @discount_multiplier = @printing_hub.discount_multiplier
   end
 
   # GET /printing_sets/new

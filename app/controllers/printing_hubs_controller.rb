@@ -101,6 +101,6 @@ class PrintingHubsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def printing_hub_params
-      params.require(:printing_hub).permit(:name, :description, :image)
+      params.require(:printing_hub).permit(:name, :description, :image, :discount)
     end
 end

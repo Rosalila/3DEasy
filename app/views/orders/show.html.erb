@@ -3,44 +3,53 @@
 <h1>Order #<%= @order.id %></h1>
 
 <p>
-  <strong>User:</strong>
+  <strong>User</strong> <br>
   <%= @order.user.username %>
 </p>
 
 <p>
-  <strong>Order state:</strong>
+  <strong>State</strong> <br>
   <%= @order.order_state.name %>
 </p>
 
-<p>
-  <strong>Doge address:</strong>
-  <%= @order.doge_address %>
-</p>
+<h2>Shipping</h2>
 
 <p>
-  <strong>Your deposits:</strong>
-  <%= @order.doge_deposits %> confirmed
-</p>
-
-<p>
-  <strong>Your unconfirmed deposits:</strong>
-  <%= @order.doge_deposits_unconfirmed %> unconfirmed
-</p>
-
-<p>
-  <strong>Shipping address:</strong>
+  <strong>Shipping address</strong> <br>
   <%= @order.shipping_address %>
 </p>
 
 <p>
-  <strong>Shipping type:</strong>
+  <strong>Shipping type</strong> <br>
   <%= @order.shipping_type.name %>
 </p>
+
+<h2>Payment</h2>
+
+<p>
+  <strong>Total</strong> <br>
+  Ð <%= @order.doges %>
+</p>
+
+<p>
+  <strong>Deposit your payment to this dogecoin address</strong> <br>
+  <%= @order.doge_address %>
+</p>
+
+<p>
+  <strong>Your deposits</strong> <br>
+  Ð <%= @order.doge_deposits %> confirmed (Ð <%= @order.doge_deposits_unconfirmed %> unconfirmed)
+</p>
+
+
 
 <div id="qrcode"></div>
 <script type="text/javascript">
 new QRCode(document.getElementById("qrcode"), "<%= @order.doge_address %>");
 </script>
+
+
+<h1>Items</h1>
 
 <% items_amount = 0 %>
 
@@ -49,7 +58,6 @@ new QRCode(document.getElementById("qrcode"), "<%= @order.doge_address %>");
     <tr>
 		  <th>Item</th>
 		  <th>Amount</th>
-		  <th>Doges</th>
 		  <th></th>
     </tr>
   </thead>
@@ -58,18 +66,9 @@ new QRCode(document.getElementById("qrcode"), "<%= @order.doge_address %>");
       <% items_amount += order_item.amount %>
 		  <tr>
 		    <td><%= order_item.printing_set.name %></td>
-		    <td><%= order_item.amount %></td>
 		    <td>Ð <%= order_item.amount*order_item.printing_set.doges %></td>
 		    <td><%= link_to "Show", order_item.printing_set, class: 'ui button' %></td>
 		  </tr>
 		<% end %>
   </tbody>
 </table>
-<p>
-  <strong>Shipping:</strong>
-  Ð <%= @order.shipping_type.doges * items_amount %>
-</p>
-<p>
-  <strong>Total:</strong>
-  Ð <%= @order.doges %>
-</p>

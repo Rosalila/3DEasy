@@ -9,6 +9,8 @@ class OrdersController < ApplicationController
 
     @shipping_type = ShippingType.find_by_id(params[:shipping_type_id])
     @printing_hub = PrintingHub.find_by_id(params[:printing_hub_id])
+    @discount = @printing_hub.discount
+    @discount_multiplier = @printing_hub.discount_multiplier
 
     if !@printing_hub.shipping_types.exists?(id: @shipping_type.id)
       return
@@ -42,7 +44,7 @@ class OrdersController < ApplicationController
 
 		    order_item.save
         cart_item.destroy
-        @order.doges += order_item.amount * order_item.printing_set.doges + @shipping_type.doges
+        @order.doges += order_item.amount * order_item.printing_set.doges * @discount_multiplier + @shipping_type.doges
       end
     end
 
@@ -90,6 +92,9 @@ class OrdersController < ApplicationController
         @items.push(cart_item)
       end
     end
+
+    @discount = @printing_hub.discount
+    @discount_multiplier = @printing_hub.discount_multiplier
   end
 
   def delete_from_cart

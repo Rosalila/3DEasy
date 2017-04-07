@@ -5,6 +5,7 @@
 <%= render 'add_printer_modal' %>
 
 <h1><%= @printing_hub.name %></h1>
+<p>Current discount: <%= @printing_hub.discount %>%</p>
 <%= link_to 'Watch', @printing_hub, class: "ui button" %>
 <%= link_to 'Edit', edit_printing_hub_path(@printing_hub), class: "ui button" %>
 

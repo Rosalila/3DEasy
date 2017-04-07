@@ -12,4 +12,11 @@ class PrintingHub < ApplicationRecord
   def has_printing_set printing_set
     return printing_sets.exists?(id: printing_set)
   end
+
+  def discount_multiplier
+    if !discount
+      return 1
+    end
+    return 1.0-discount/100
+  end
 end

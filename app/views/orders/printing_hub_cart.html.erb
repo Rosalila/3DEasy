@@ -16,14 +16,21 @@
   <tbody>
 		<% @items.each do |item| %>
       <% printing_set = item.printing_set %>
-			<% total_doges += printing_set.doges*item.amount%>
+			<% total_doges += printing_set.doges*item.amount*@discount_multiplier%>
 			<% total_items += item.amount%>
 		  <tr>
 		    <td><%= printing_set.name %></td>
-		    <td>Ð <%= printing_set.doges %></td>
-		    <td>
-          
+        <% if @discount_multiplier == 1 %>
+		      <td>Ð <%= printing_set.doges %></td>
+        <% else %>
+		      <td>
+            <%= @discount %>% Off! <br>
+            <strike>Ð <%= printing_set.doges %></strike><br>
+            Ð <%= printing_set.doges * @discount_multiplier %>
+          </td>
+        <% end%>
 
+		    <td>
             <%= form_tag(update_item_amount_path, method: "post", class: 'ui form') do %>
               <input type="hidden" value="<%=item.id%>" name="item_id"/>
               <% if @shipping_type %>
