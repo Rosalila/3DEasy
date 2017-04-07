@@ -1,4 +1,4 @@
-<div class="ui special cards">
+<div class="ui special cards centered">
 
 	<% @printing_sets.each do |printing_set| %>
 
@@ -22,7 +22,7 @@
         <span class="date">Created at <%= printing_set.created_at.strftime('%v') %></span>
       </div>
 			<div class="description">
-        <%= truncate(printing_set.description, :length => 40) %>
+        <%= truncate(printing_set.description, :length => 40) %> <%= link_to "read more", printing_set, class: 'header' %>
       </div>
     </div>
 		<div class="extra content">

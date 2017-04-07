@@ -14,13 +14,11 @@
 	<%= link_to 'Edit', edit_printing_set_path(@printing_set), class: "ui button" %>
 <% end %>
 
-<p>
-  <strong>By:</strong>
-  <%= link_to @printing_set.printing_hub.name, @printing_set.printing_hub %>
-</p>
+<p><%= @printing_set.description %>
+
 <p>
   <strong>Price:</strong>
-  <%= @printing_set.doges %>Ð
+  <%= @printing_set.doges %>Ð + Shipping
 </p>
 
 <%= form_tag("/add_to_cart", method: "post") do %>
@@ -49,6 +47,13 @@
 				paddings: -1
     });
 </script>
+
+<br>
+
+<p>
+  <strong>By:</strong>
+  <%= link_to @printing_set.printing_hub.name, @printing_set.printing_hub %>
+</p>
 
 <% if @user_has_printing_set %>
 	<h2>Printables</h2>
