@@ -84,7 +84,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'klopp.co' }
+  config.action_mailer.default_url_options = { :host => '3deasy.co' }
   config.action_mailer.delivery_method = :smtp
   # change to true to allow email to be sent during development
   config.action_mailer.perform_deliveries = true
@@ -92,12 +92,14 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "mail.google.com",####important
-    authentication: "plain",
+    address: "smtp.zoho.com",
+    port: 465,
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    ssl: true,
+    tls: true,
+    authentication: "login",
+    user_name: ENV["EMAIL_USERNAME"],
+    password: ENV["EMAIL_PASSWORD"]
   }
+
 end
