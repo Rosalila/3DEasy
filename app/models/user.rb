@@ -36,4 +36,8 @@ class User < ApplicationRecord
   def has_printing_set printing_set
     return printing_sets.exists?(id: printing_set)
   end
+
+  def has_order order
+    return orders.exists?(id: order)
+  end
 end
