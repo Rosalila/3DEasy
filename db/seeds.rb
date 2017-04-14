@@ -6,4 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-OrderState.create([{ name: 'pending' }, { name: 'done' }])
+OrderState.create([{ name: 'pending' }, { name: 'printed' }, { name: 'shipped' }])

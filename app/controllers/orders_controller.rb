@@ -206,7 +206,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-    if !current_user.has_order @order
+    if !current_user.has_printing_hub @order.printing_hub
       return
     end
     respond_to do |format|
