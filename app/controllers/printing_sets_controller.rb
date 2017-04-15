@@ -7,15 +7,20 @@ class PrintingSetsController < ApplicationController
     @printing_sets = PrintingSet.all.reverse
   end
 
-  # GET /printing_sets/1
-  # GET /printing_sets/1.json
-  def show
+  def show_item_by_name
+    @printing_hub = PrintingHub.find_by_name(params[:printing_hub_name])
+    @printing_set = PrintingSet.find_by_name(params[:printing_set_name])
     @printable = Printable.new
     @printing_set_image = PrintingSetImage.new
     @user_has_printing_set = (current_user and current_user.has_printing_set @printing_set)
-    @printing_hub = @printing_set.printing_hub
     @discount = @printing_hub.discount
     @discount_multiplier = @printing_hub.discount_multiplier
+  end
+
+  # GET /printing_sets/1
+  # GET /printing_sets/1.json
+  def show
+    redirect_to show_item_by_name_path(@printing_set.printing_hub.name,@printing_set.name)
   end
 
   # GET /printing_sets/new

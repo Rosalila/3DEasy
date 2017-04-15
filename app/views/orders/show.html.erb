@@ -71,7 +71,7 @@ new QRCode(document.getElementById("qrcode"), "<%= @order.doge_address %>");
 		  <tr>
 		    <td><%= order_item.printing_set.name %></td>
 		    <td><%= order_item.amount %></td>
-		    <td><%= link_to "Show", order_item.printing_set, class: 'ui button' %></td>
+		    <td><%= link_to "Show", show_item_by_name_path(order_item.printing_set.printing_hub.name,order_item.printing_set.name), class: 'ui button' %></td>
 		  </tr>
 		<% end %>
   </tbody>
