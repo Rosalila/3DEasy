@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<% content_for :head do %>
+  <meta property="og:url" content="http://3DEasy.co" />
+  <meta property="og:title" content="<%= @printing_set.name %> at 3DEasy.co" />
+  <meta property="og:image" content="<%= @printing_set.image %>" />
+  <meta property="og:description" content="<%= @printing_set.description %>" />
+<% end %>
+
 <% if @user_has_printing_set %>
 	<%= render 'add_printable_modal' %>
 	<%= render 'add_printing_set_image_modal' %>

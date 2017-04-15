@@ -1,0 +1,12 @@
+<% if content_for?(:head) %>
+  <%= yield(:head) %>
+<% else %>
+  <meta property="og:url" content="http://3DEasy.co" />
+  <meta property="og:title" content="3DEasy.co" />
+  <meta property="og:image" content="/img/wow.png" />
+  <meta property="og:description" content="Shop 3D prints easily using Dogecoins." />
+
+  <meta name="description" content="Shop 3D prints easily using Dogecoins.">
+  <meta name="keywords" content="doge,dogecoin,cryptocurrency,shiba inu,shop,3d printing">
+  <meta name="author" content="3DEasy">
+<% end %>
