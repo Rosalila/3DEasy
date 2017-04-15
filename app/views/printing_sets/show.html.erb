@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <% content_for :head do %>
-  <meta property="og:url" content="http://3DEasy.co" />
+  <meta property="og:url" content="http://3DEasy.co<%= printing_set_path(@printing_set) %>" />
   <meta property="og:title" content="<%= @printing_set.name %> at 3DEasy.co" />
   <meta property="og:image" content="<%= @printing_set.image %>" />
   <meta property="og:description" content="<%= @printing_set.description %>" />
