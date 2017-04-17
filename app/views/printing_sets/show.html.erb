@@ -1,0 +1,115 @@
+<p id="notice"><%= notice %></p>
+
+<% content_for :head do %>
+  <meta property="og:url" content="http://3DEasy.co<%= printing_set_path(@printing_set) %>" />
+  <meta property="og:title" content="<%= @printing_set.name %> at 3DEasy.co" />
+  <meta property="og:image" content="http://3DEasy.co<%= @printing_set.image %>" />
+  <meta property="og:description" content="<%= @printing_set.description %>" />
+<% end %>
+
+<% if @user_has_printing_set %>
+	<%= render 'add_printable_modal' %>
+	<%= render 'add_printing_set_image_modal' %>
+
+	<% @printing_set.printables.each do |printable| %>
+  	<%= render 'print_modal', locals: {printable_id: printable.id} %>
+	<% end %>
+<% end %>
+
+<h1><%= @printing_set.name %></h1>
+<% if @user_has_printing_set %>
+	<%= link_to 'Edit', edit_printing_set_path(@printing_set), class: "ui button" %>
+<% end %>
+
+<% if @discount_multiplier != 1 %>
+  <h3><%= @discount %>% Off!</h3>
+<% end %>
+
+<p><%= @printing_set.description %><p>
+  <strong>Price:</strong>
+
+	<% if @discount_multiplier == 1 %>
+	  Ð <%= @printing_set.doges %> + Shipping
+	<% else %>
+	  <strike>Ð <%= @printing_set.doges %> + Shipping</strike>
+	  <br>	  Ð <%= @printing_set.doges * @discount_multiplier %> + Shipping
+	<% end %>
+</p>
+
+<%= form_tag("/add_to_cart", method: "post") do %>
+  <input type="hidden" value="<%=@printing_set.id%>" name="printing_set_id"/>
+  <input type="submit" value="Add To Cart" class="ui button"/>
+<% end %>
+
+<div id="Glide" class="glide">
+    <div class="glide__wrapper">
+        <ul class="glide__track">
+            <li class="glide__slide"><img src="<%= @printing_set.image %>"/></li>
+            <% @printing_set.printing_set_images.each do |printing_set_image| %>
+              <li class="glide__slide"><img src="<%= printing_set_image.image %>"/></li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="glide__bullets"></div>
+
+</div>
+
+<script>
+    $("#Glide").glide({
+        type: "carousel",
+        autoheight: true,
+				paddings: -1
+    });
+</script>
+
+<br>
+
+<p>
+  <strong>By:</strong>
+  <%= link_to @printing_set.printing_hub.name, @printing_set.printing_hub %>
+</p>
+
+<% if @user_has_printing_set %>
+	<h2>Printables</h2>
+
+	<table class="ui celled table">
+		<thead>
+		  <tr>
+				<th>Image</th>
+				<th>Github repo</th>
+				<th></th>
+				<th></th>
+		  </tr>
+		</thead>
+		<tbody>
+			<% @printing_set.printables.each do |printable| %>
+				<tr>
+				  <td><img src="https://raw.githubusercontent.com/<%= printable.github_repo %>/master/image.png" /></td>
+				  <td><%= printable.github_repo %></td>
+				  <td><a class="ui button" href="https://raw.githubusercontent.com/<%= printable.github_repo %>/master/toolpath.gcode">Download<a/></td>
+		      <td><input type="button" class="ui button" value="Print" onClick="$('.ui.print_<%=printable.id%>.modal').modal('show');"/></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+  <input type="button" class="ui button" value="New printable" onClick="$('.ui.printable.modal').modal('show');"/>
+
+	<table class="ui celled table">
+		<thead>
+		  <tr>
+				<th>Image</th>
+				<th></th>
+		  </tr>
+		</thead>
+		<tbody>
+			<% @printing_set.printing_set_images.each do |printing_set_image| %>
+				<tr>
+				  <td><img width="150" src="<%= printing_set_image.image %>"/></td>
+				  <td><%= link_to 'Destroy', printing_set_image, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+  <input type="button" class="ui button" value="New image" onClick="$('.ui.printing_set_image.modal').modal('show');"/>
+<% end %>

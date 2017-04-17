@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Select your shipping</h2>
+<%= form_tag(printing_hub_cart_path(@printing_hub), action: printing_hub_cart_path(@printing_hub.id), method: "get", class: 'ui form') do %>
+  <div class="field">
+    <label>Shipping</label>
+    <%= collection_select :shipping_type, :id, @printing_hub.shipping_types.all, :id, :name_with_price %>
+  </div>
+  <input type="submit" value="Select" class="ui button"/>
+<% end %>

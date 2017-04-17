@@ -20,6 +20,9 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     @order.order_state_id = OrderState.find_by_name("pending").id
     @order.shipping_address = params[:order][:shipping_address]
+    @order.first_name = params[:order][:first_name]
+    @order.last_name = params[:order][:last_name]
+    @order.zip_code = params[:order][:zip_code]
     @order.shipping_type_id = @shipping_type.id
     @order.printing_hub_id = @printing_hub.id
     @order.doges = 0
@@ -72,6 +75,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def shipping_choice
+    @printing_hub = PrintingHub.find_by_id(params[:printing_hub_id])
+  end
+
   def printing_hub_cart
     if !current_user
       redirect_to new_user_session_path
@@ -79,12 +86,15 @@ class OrdersController < ApplicationController
     end
 
     @printing_hub = PrintingHub.find_by_id(params[:id])
-    @shipping_type = @printing_hub.shipping_types.first
+    @shipping_type = nil
     if params[:shipping_type] != nil
       @shipping_type = ShippingType.find_by_id(params[:shipping_type][:id])
     end
     if params[:shipping_type_id] != nil
       @shipping_type = ShippingType.find_by_id(params[:shipping_type_id])
+    end
+    if @shipping_type == nil
+      redirect_to shipping_choice_path(@printing_hub.id)
     end
     @items = []
     current_user.cart_items.each do |cart_item|
@@ -239,6 +249,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :order_state_id, :doge_address, :shipping_address, :shipping_type_id)
+      params.require(:order).permit(:user_id, :order_state_id, :doge_address, :shipping_address, :shipping_type_id, :first_name, :last_name, :zip_code, :tracking_info)
     end
 end

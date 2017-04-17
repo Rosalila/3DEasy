@@ -55,23 +55,39 @@
   </tbody>
 </table>
 
-<h2>Shipping method</h2>
-<div class="field">
-  <%= form_tag(printing_hub_cart_path(@printing_hub), method: "get", class: 'ui form') do %>
-  	<%= collection_select :shipping_type, :id, @printing_hub.shipping_types.all, :id, :name, {prompt: @shipping_type.name}, onchange: 'this.form.submit()' %>
-  <% end %>
-</div>
-
-<% shipping = @shipping_type.doges*total_items %>
-<p><strong>Subtotal:</strong> Ð<%= total_doges %></p>
-<p><strong>Shipping:</strong> Ð<%= shipping %></p>
-<p><strong>Total:</strong> Ð<%= total_doges + shipping %></p>
+<h2>Delivery information</h2>
+<%= form_tag(printing_hub_cart_path(@printing_hub), method: "get", class: 'ui form') do %>
+  <div class="field">
+    <label>Shipping</label>
+    <%= collection_select :shipping_type, :id, @printing_hub.shipping_types.all, :id, :name_with_price, {prompt: @shipping_type.name}, onchange: 'this.form.submit()' %>
+  </div>
+<% end %>
 
 <%= form_tag(checkout_path, method: "post", class: 'ui form') do %>
-  <h2>Shipping address</h2>
-  <%= text_area "order", "shipping_address"%>
+  <div class="field">
+    <label>First Name</label>
+    <%= text_field "order", "first_name"%>
+  </div>
+  <div class="field">
+    <label>Last Name</label>
+    <%= text_field "order", "last_name"%>
+  </div>
+  <div class="field">
+    <label>Shipping address</label>
+    <%= text_area "order", "shipping_address"%>
+  </div>
+  <div class="field">
+    <label>ZIP Code</label>
+    <%= text_field "order", "zip_code"%>
+  </div>
   <br>
   <input type="hidden" value="<%=@printing_hub.id%>" name="printing_hub_id"/>
   <input type="hidden" value="<%=@shipping_type.id%>" name="shipping_type_id"/>
+
+  <% shipping = @shipping_type.doges*total_items %>
+  <p><strong>Subtotal:</strong> Ð<%= total_doges %></p>
+  <p><strong>Shipping:</strong> Ð<%= shipping %></p>
+  <p><strong>Total:</strong> Ð<%= total_doges + shipping %></p>
+
   <%= submit_tag 'Checkout', class: 'ui button' %>
 <% end %>

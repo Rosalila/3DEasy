@@ -19,13 +19,33 @@
 <h2>Shipping</h2>
 
 <p>
-  <strong>Shipping address</strong> <br>
-  <%= @order.shipping_address %>
+  <strong>Tracking Info</strong> <br>
+  <%= @order.tracking_info %>
 </p>
 
 <p>
   <strong>Shipping type</strong> <br>
   <%= @order.shipping_type.name %>
+</p>
+
+<p>
+  <strong>First Name</strong> <br>
+  <%= @order.first_name %>
+</p>
+
+<p>
+  <strong>Last Name</strong> <br>
+  <%= @order.last_name %>
+</p>
+
+<p>
+  <strong>Shipping address</strong> <br>
+  <%= @order.shipping_address %>
+</p>
+
+<p>
+  <strong>ZIP Code</strong> <br>
+  <%= @order.zip_code %>
 </p>
 
 <h2>Payment</h2>

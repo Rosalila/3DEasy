@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "print" => "octoprint#print", as: "print"
   get '/printing_hubs/admin/:id', to: 'printing_hubs#admin_show', as: "printing_hub_admin_show"
   get '/cart', to: 'orders#cart', as: "cart"
+  get '/shipping_choice/:printing_hub_id', to: 'orders#shipping_choice', as: "shipping_choice"
   get '/printing_hub_cart/:id', to: 'orders#printing_hub_cart', as: "printing_hub_cart"
   post '/add_to_cart', to: 'orders#add_to_cart', as: "add_to_cart"
   post '/update_item_amount', to: 'orders#update_item_amount', as: "update_item_amount"
