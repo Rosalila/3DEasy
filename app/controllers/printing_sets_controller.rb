@@ -20,7 +20,7 @@ class PrintingSetsController < ApplicationController
   # GET /printing_sets/1
   # GET /printing_sets/1.json
   def show
-    redirect_to show_item_by_name_path(@printing_set.id)
+    redirect_to show_item_by_name_path(@printing_set.id_and_paramterized_name)
   end
 
   # GET /printing_sets/new
