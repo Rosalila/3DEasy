@@ -8,8 +8,8 @@ class PrintingSetsController < ApplicationController
   end
 
   def show_item_by_name
-    @printing_hub = PrintingHub.find_by_id(params[:printing_hub_id])
     @printing_set = PrintingSet.find_by_id(params[:printing_set_id])
+    @printing_hub = @printing_set.printing_hub
     @printable = Printable.new
     @printing_set_image = PrintingSetImage.new
     @user_has_printing_set = (current_user and current_user.has_printing_set @printing_set)
@@ -20,7 +20,7 @@ class PrintingSetsController < ApplicationController
   # GET /printing_sets/1
   # GET /printing_sets/1.json
   def show
-    redirect_to show_item_by_name_path(@printing_set.printing_hub.id,@printing_set.id)
+    redirect_to show_item_by_name_path(@printing_set.id)
   end
 
   # GET /printing_sets/new

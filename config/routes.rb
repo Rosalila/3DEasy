@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :printers
 
   get "home" => "home#index", as: "home"
-  get "items/:printing_hub_id/:printing_set_id" => "printing_sets#show_item_by_name", as: "show_item_by_name"
+  get "items/:printing_set_id" => "printing_sets#show_item_by_name", as: "show_item_by_name"
 
   root "home#index"
 
