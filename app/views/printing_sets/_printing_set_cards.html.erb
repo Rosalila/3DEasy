@@ -18,7 +18,7 @@
 		    <img src="<%= printing_set.image %>">
 		  </div>
 		  <div class="content">
-		    <%= link_to printing_set.name, show_item_by_name_path(printing_set.printing_hub.name,printing_set.name), class: 'header' %>
+		    <%= link_to printing_set.name, show_item_by_name_path(printing_set.printing_hub.id_and_paramterized_name,printing_set.id_and_paramterized_name), class: 'header' %>
         <% if discount != 1 %>
           <%= printing_set.printing_hub.discount %>% off!
         <% end %>
@@ -26,12 +26,12 @@
 		      <span class="date">Created at <%= printing_set.created_at.strftime('%v') %></span>
 		    </div>
 				<div class="description">
-		      <%= truncate(printing_set.description, :length => 40) %> <%= link_to "read more", show_item_by_name_path(printing_set.printing_hub.name,printing_set.name), class: 'header' %>
+		      <%= truncate(printing_set.description, :length => 40) %> <%= link_to "read more", show_item_by_name_path(printing_set.printing_hub.id_and_paramterized_name,printing_set.id_and_paramterized_name), class: 'header' %>
 		    </div>
 		  </div>
 			<div class="extra content">
 		    <span class="right floated" id="icon">
-		      <a href="<%= show_item_by_name_path(printing_set.printing_hub.name,printing_set.name) %>">
+		      <a href="<%= show_item_by_name_path(printing_set.printing_hub.id_and_paramterized_name,printing_set.id_and_paramterized_name) %>">
 		        <i class="image outline icon"></i>
 		      </a>
 		    </span>

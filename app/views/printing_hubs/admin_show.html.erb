@@ -104,7 +104,7 @@
 		    <td><%= printing_set.doges %></td>
 		    <td><%= printing_set.printables.size %></td>
         <td>
-          <%= link_to "Show", show_item_by_name_path(@printing_hub.name,printing_set.name), class: "ui button" %>
+          <%= link_to "Show", show_item_by_name_path(@printing_hub.id_and_paramterized_name,printing_set.id_and_paramterized_name), class: "ui button" %>
         </td>
 		  </tr>
 		<% end %>

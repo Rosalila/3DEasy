@@ -9,6 +9,10 @@ class PrintingHub < ApplicationRecord
   has_many :cart_items
   has_many :orders
 
+  def id_and_paramterized_name
+    return self.id.to_s + "-" + self.name.parameterize
+  end
+
   def has_printing_set printing_set
     return printing_sets.exists?(id: printing_set)
   end
