@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :printing_hubs
   #devise_for :users
   resources :printers
+  resources :cupons
 
   get "home" => "home#index", as: "home"
   get "items/:printing_set_id" => "printing_sets#show_item_by_name", as: "show_item_by_name"

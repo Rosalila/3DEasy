@@ -16,18 +16,18 @@
   <tbody>
 		<% @items.each do |item| %>
       <% printing_set = item.printing_set %>
-			<% total_doges += printing_set.doges*item.amount*@discount_multiplier%>
+			<% total_doges += printing_set.get_price(@cupon) * item.amount %>
 			<% total_items += item.amount%>
 		  <tr>
 		    <td><%= printing_set.name %></td>
-        <% if @discount_multiplier == 1 %>
-		      <td>Ð <%= printing_set.doges %></td>
-        <% else %>
+        <% if @cupon %>
 		      <td>
-            <%= @discount %>% Off! <br>
+            <%= @cupon.discount %>% Off! <br>
             <strike>Ð <%= printing_set.doges %></strike><br>
-            Ð <%= printing_set.doges * @discount_multiplier %>
+            Ð <%= printing_set.get_price(@cupon) %>
           </td>
+        <% else %>
+		      <td>Ð <%= printing_set.doges %></td>
         <% end%>
 
 		    <td>
@@ -54,6 +54,8 @@
 		<% end %>
   </tbody>
 </table>
+
+<%= render '/home/cupon_form' %>
 
 <h2>Delivery information</h2>
 <%= form_tag(printing_hub_cart_path(@printing_hub), method: "get", class: 'ui form') do %>

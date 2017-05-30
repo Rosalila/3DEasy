@@ -40,4 +40,8 @@ class User < ApplicationRecord
   def has_order order
     return orders.exists?(id: order)
   end
+
+  def has_cupon cupon
+    return has_printing_hub cupon.printing_hub
+  end
 end

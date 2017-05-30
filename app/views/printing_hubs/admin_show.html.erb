@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<%= render 'add_cupon_modal' %>
 <%= render 'add_shipping_modal' %>
 <%= render 'add_printing_set_modal' %>
 <%= render 'add_printer_modal' %>
@@ -25,6 +26,29 @@
 		<% end %>
   </tbody>
 </table>
+
+<h2>Cupons:</h2>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+		  <th>Code</th>
+		  <th>Discount</th>
+		  <th>End date</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @printing_hub.cupons.each do |cupon| %>
+		  <tr>
+		    <td><%= cupon.code %></td>
+		    <td><%= cupon.discount %>%</td>
+		    <td><%= cupon.end_date %></td>
+		  </tr>
+		<% end %>
+  </tbody>
+</table>
+
+<input type="button" class="ui button" value="New Cupon" onClick="$('.ui.cupon.modal').modal('show');"/>
 
 <h2>Shipping type:</h2>
 

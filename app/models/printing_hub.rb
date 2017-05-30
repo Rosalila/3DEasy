@@ -8,6 +8,7 @@ class PrintingHub < ApplicationRecord
   has_many :orders, through: :printing_sets
   has_many :cart_items
   has_many :orders
+  has_many :cupons
 
   def has_printing_set printing_set
     return printing_sets.exists?(id: printing_set)
@@ -19,4 +20,9 @@ class PrintingHub < ApplicationRecord
     end
     return 1.0-discount/100
   end
+
+  def get_cupon cupon_code
+    return cupons.find_by_code(cupon_code)
+  end
+
 end

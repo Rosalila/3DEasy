@@ -17,29 +17,37 @@
 <% end %>
 
 <h1><%= @printing_set.name %></h1>
-<% if @user_has_printing_set %>
-	<%= link_to 'Edit', edit_printing_set_path(@printing_set), class: "ui button" %>
-<% end %>
 
-<% if @discount_multiplier != 1 %>
-  <h3><%= @discount %>% Off!</h3>
-<% end %>
+<div class="ui grid">
+  <div class="eight wide column">
+		<% if @user_has_printing_set %>
+			<%= link_to 'Edit', edit_printing_set_path(@printing_set), class: "ui button" %>
+		<% end %>
 
-<p><%= @printing_set.description %><p>
-  <strong>Price:</strong>
+		<% if @cupon %>
+			<h3><%= @cupon.discount %>% Off!</h3>
+		<% end %>
 
-	<% if @discount_multiplier == 1 %>
-	  Ð <%= @printing_set.doges %> + Shipping
-	<% else %>
-	  <strike>Ð <%= @printing_set.doges %> + Shipping</strike>
-	  <br>	  Ð <%= @printing_set.doges * @discount_multiplier %> + Shipping
-	<% end %>
-</p>
+		<p><%= @printing_set.description %><p>
+			<strong>Price:</strong>
 
-<%= form_tag("/add_to_cart", method: "post") do %>
-  <input type="hidden" value="<%=@printing_set.id%>" name="printing_set_id"/>
-  <input type="submit" value="Add To Cart" class="ui button"/>
-<% end %>
+			<% if @cupon %>
+				<strike>Ð <%= @printing_set.doges %> + Shipping</strike>
+				<br>	  Ð <%= @printing_set.get_price @cupon  %> + Shipping
+			<% else %>
+				Ð <%= @printing_set.doges %> + Shipping
+			<% end %>
+		</p>
+
+		<%= form_tag("/add_to_cart", method: "post") do %>
+			<input type="hidden" value="<%=@printing_set.id%>" name="printing_set_id"/>
+			<input type="submit" value="Add To Cart" class="ui button primary"/>
+		<% end %>
+  </div>
+  <div class="eight wide column">
+    <%= render '/home/cupon_form' %>
+  </div>
+</div>
 
 <div id="Glide" class="glide">
     <div class="glide__wrapper">
