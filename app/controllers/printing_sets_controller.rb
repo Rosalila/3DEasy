@@ -4,17 +4,20 @@ class PrintingSetsController < ApplicationController
   # GET /printing_sets
   # GET /printing_sets.json
   def index
+    update_cupon params[:cupon_code]
+
     @printing_sets = PrintingSet.all.reverse
   end
 
   def show_item_by_name
+    update_cupon params[:cupon_code]
+
     @printing_set = PrintingSet.find_by_id(params[:printing_set_id])
     @printing_hub = @printing_set.printing_hub
     @printable = Printable.new
     @printing_set_image = PrintingSetImage.new
     @user_has_printing_set = (current_user and current_user.has_printing_set @printing_set)
-    @discount = @printing_hub.discount
-    @discount_multiplier = @printing_hub.discount_multiplier
+    @cupon = @printing_set.get_cupon @cupon_code
   end
 
   # GET /printing_sets/1

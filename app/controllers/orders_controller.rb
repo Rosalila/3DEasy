@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def checkout
+    update_cupon params[:cupon_code]
+
     if !current_user
       redirect_to new_user_session_path
       return
@@ -9,8 +11,6 @@ class OrdersController < ApplicationController
 
     @shipping_type = ShippingType.find_by_id(params[:shipping_type_id])
     @printing_hub = PrintingHub.find_by_id(params[:printing_hub_id])
-    @discount = @printing_hub.discount
-    @discount_multiplier = @printing_hub.discount_multiplier
 
     if !@printing_hub.shipping_types.exists?(id: @shipping_type.id)
       return
@@ -33,6 +33,8 @@ class OrdersController < ApplicationController
 
     @order.save
 
+    @cupon = @printing_hub.get_cupon @cupon_code
+
     current_user.cart_items.each do |cart_item|
       if cart_item.printing_set.printing_hub == @printing_hub
 		    order_item = OrderItem.new
@@ -47,7 +49,7 @@ class OrdersController < ApplicationController
 
 		    order_item.save
         cart_item.destroy
-        @order.doges += order_item.amount * (order_item.printing_set.doges * @discount_multiplier + @shipping_type.doges)
+        @order.doges += order_item.amount * (order_item.printing_set.get_price(@cupon) + @shipping_type.doges)
       end
     end
 
@@ -80,6 +82,8 @@ class OrdersController < ApplicationController
   end
 
   def printing_hub_cart
+    update_cupon params[:cupon_code]
+
     if !current_user
       redirect_to new_user_session_path
       return
@@ -103,8 +107,7 @@ class OrdersController < ApplicationController
       end
     end
 
-    @discount = @printing_hub.discount
-    @discount_multiplier = @printing_hub.discount_multiplier
+    @cupon = @printing_hub.get_cupon @cupon_code
   end
 
   def delete_from_cart

@@ -10,12 +10,15 @@ class PrintingHubsController < ApplicationController
   # GET /printing_hubs/1
   # GET /printing_hubs/1.json
   def show
+    update_cupon params[:cupon_code]
+
     @printing_set = PrintingSet.new
     @printing_sets = PrintingSet.new
     @printer = Printer.new
     @order = Order.new
     @shipping_type = ShippingType.new
     @printing_sets = @printing_hub.printing_sets.reverse
+    @cupon = Order.new
   end
 
   def admin_show
@@ -29,6 +32,7 @@ class PrintingHubsController < ApplicationController
     @printer = Printer.new
     @order = Order.new
     @shipping_type = ShippingType.new
+    @cupon = Cupon.new
 
     @orders = @printing_hub.orders
   end
