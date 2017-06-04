@@ -28,7 +28,7 @@
 			<h3><%= @cupon.discount %>% Off!</h3>
 		<% end %>
 
-		<p><%= @printing_set.description %><p>
+		<p><%= @markdown.render(@printing_set.description).html_safe %><p>
 			<strong>Price:</strong>
 
 			<% if @cupon %>

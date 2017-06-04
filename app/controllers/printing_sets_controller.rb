@@ -18,6 +18,17 @@ class PrintingSetsController < ApplicationController
     @printing_set_image = PrintingSetImage.new
     @user_has_printing_set = (current_user and current_user.has_printing_set @printing_set)
     @cupon = @printing_set.get_cupon @cupon_code
+
+    options = {
+      filter_html:     true,
+      hard_wrap:       true,
+      link_attributes: { rel: 'nofollow', target: "_blank" },
+      space_after_headers: true,
+      fenced_code_blocks: true
+    }
+
+    renderer = Redcarpet::Render::HTML.new(options)
+    @markdown = Redcarpet::Markdown.new(renderer, extensions = {})
   end
 
   # GET /printing_sets/1

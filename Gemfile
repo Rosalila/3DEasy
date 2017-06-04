@@ -10,6 +10,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'carrierwave', '~> 1.0'
 gem 'rest-client'
+gem 'redcarpet'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
