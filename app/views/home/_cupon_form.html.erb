@@ -1,7 +1,7 @@
 <form class="ui form center aligned segment">
   <div class="field">
-    <label>Apply a Cupon Code</label>
-    <input type="text" style="text-transform: uppercase" name="cupon_code" placeholder="Cupon code">
+    <label>Apply a Coupon Code</label>
+    <input type="text" style="text-transform: uppercase" name="cupon_code" placeholder="Coupon code">
   </div>
   <% if @shipping_type %>
     <input type="hidden" value="<%=@shipping_type.id%>" name="shipping_type[id]"/>
