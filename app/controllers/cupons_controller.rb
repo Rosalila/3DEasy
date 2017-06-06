@@ -1,5 +1,5 @@
 class CuponsController < ApplicationController
-  before_action :set_cupons, only: [:show, :edit, :update, :destroy]
+  before_action :set_cupon, only: [:show, :edit, :update, :destroy]
 
   # GET /cupons
   # GET /cupons.json
@@ -62,10 +62,13 @@ class CuponsController < ApplicationController
   # DELETE /cupons/1
   # DELETE /cupons/1.json
   def destroy
-    return
+    if !current_user.has_cupon @cupon
+      return
+    end
+    printing_hub = @cupon.printing_hub
     @cupon.destroy
     respond_to do |format|
-      format.html { redirect_to cupons_url, notice: 'Cupon was successfully destroyed.' }
+      format.html { redirect_to printing_hub_admin_show_path(printing_hub), notice: 'Cupon was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

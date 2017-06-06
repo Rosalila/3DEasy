@@ -43,6 +43,7 @@
 		    <td><%= cupon.code %></td>
 		    <td><%= cupon.discount %>%</td>
 		    <td><%= cupon.end_date %></td>
+        <td><%= link_to 'Remove', cupon_path(cupon), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "ui button" %></td>
 		  </tr>
 		<% end %>
   </tbody>
