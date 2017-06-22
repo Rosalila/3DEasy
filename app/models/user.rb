@@ -13,6 +13,13 @@ class User < ApplicationRecord
   has_many :orders
   has_many :cart_items
 
+  after_create :send_welcome_email
+
+  def send_welcome_email
+    puts "testi"
+    UserMailer.welcome_email(self).deliver_later
+  end
+
   def has_printer printer
     return printers.exists?(id: printer)
   end
