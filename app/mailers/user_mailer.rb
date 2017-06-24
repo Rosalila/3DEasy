@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
-  default :from => "automated@3deasy.co"
- 
+  default :from => "3DEasy.co <automated@3deasy.co>"
+
   def welcome_email(user)
     @user = user
     @url  = "http://3deasy.co/users/sign_in"
