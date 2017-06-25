@@ -26,113 +26,114 @@
               </div>
             </div>
 -->
-              <% if !current_user %>
-                <%= link_to "Log in", new_user_session_path, class: 'ui item' %>
-                <%= link_to "Sign up", new_user_registration_path, class: 'ui item' %>
-              <% else %>
-                <%= link_to destroy_user_session_path, :method => :delete, :class => "ui item" do %>Sign out<%end%>
-              <% end %>
+            <% if !current_user %>
+              <%= link_to "Log in", new_user_session_path, class: 'ui item' %>
+              <%= link_to "Sign up", new_user_registration_path, class: 'ui item' %>
+            <% else %>
+              <%= link_to destroy_user_session_path, :method => :delete, :class => "ui item" do %>Sign out<%end%>
+            <% end %>
 
-            </div>
-          </div>
-
-          <div class="ui transition information visible" style="">
-            <h1 class="ui inverted centered header">
-              3DEasy.co
-            </h1>
-              <p class="ui centered lead">Shop 3D prints easily using Dogecoins.</p>
-              <a href="/printing_sets" class="large basic inverted animated fade ui button">
-                <div class="visible content">Get started</div>
-                <div class="hidden content">Start Shoping Now</div>
-              </a>
-              <div class="ui centerted image" style="border: 0px">
-                <img src="/img/banner.png">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>>
-      <div class="ui vertical feature segment">
-        <div class="ui centered page grid">
-          <div class="fourteen wide column">
-            <div class="ui three column center aligned stackable divided grid">
-              <div class="column column-feature">
-                <div class="ui icon header">
-                  <i class="gift icon"></i>
-                  Shop 3D Prints
-                </div>
-                <p>From cool gifts for your friends to useful household items.</p>
-                <p>
-                  <a class="ui button" href="/printing_sets">
-                    Get Started
-                  </a>
-                </p>
-              </div>
-              <div class="column column-feature">
-                <div class="ui icon header">
-                  <i class="truck icon"></i>
-                  We Ship Worldwide
-                </div>
-                <p>It doesn't matter in which country you live. We can ship there.</p>
-                <p>
-                  <a class="ui green button" href="/printing_sets">
-                    Start Shopping Now!
-                  </a>
-                </p>
-              </div>
-              <div class="column column-feature">
-                <div class="ui icon header">
-                  <i class="paw icon"></i>
-                  Pay With Dogecoin
-                </div>
-                <p>Shop using the most modern and fun currency in the world.</p>
-                <p>
-                  <a class="ui button" href="/printing_sets">
-                    wow!
-                  </a>
-                </p>
-              </div>
-            </div>
           </div>
         </div>
 
-<!--
-        <div class="ui centered page grid">
-          <h3 class="subscribe-header">Subscribe to Mailing List</h3>
-            <p class="ui centered lead large">At least he won't reach his highest potential unless you enroll him in Cat University's 2013 class.</p>
-            <div class="ui form eight wide subscribe column">
-              <div class="field">
-                <div class="ui fluid action input">
-                  <input placeholder="Susbcribe..." type="text">
-                  <div class="ui button">Susbcribe</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
--->
-
-        <div class="ui recent-works vertical segment">
-          <div class="ui very relaxed stackable centered page grid">
-            <div class="row">
-              <div class="eight wide centered column">
-                <h1 class="center aligned ui inverted header">
-                  Featured Items
-                </h1>
-              <div class="ui horizontal divider"><i class="white flaticon-camera icon"></i></div>
-              <p class="ui centered lead">Check Out Our <br> Customers Favourite Items!</p>
-            </div>
-          </div>
-          <div class="fourteen wide column">
-            <div class="ui three column aligned stackable divided grid">
-
-              <% @printing_sets = PrintingSet.all.limit(3) %>
-              <%= render '/printing_sets/printing_set_cards' %>
-
+        <div class="ui transition information visible" style="">
+          <h1 class="ui inverted centered header">3DEasy.co</h1>
+          <p class="ui centered lead">Shop 3D prints easily using Dogecoins.</p>
+          <a href="/printing_sets" class="large basic inverted animated fade ui button">
+            <div class="visible content">Get started</div>
+            <div class="hidden content">Start Shoping Now</div>
+          </a>
+          <div class="ui centerted image" style="border: 0px">
+            <img src="/img/banner.png">
           </div>
         </div>
       </div>
     </div>
+  </div>>
+  <div class="ui vertical feature segment">
+    <div class="ui centered page grid">
+      <div class="fourteen wide column">
+        <div class="ui three column center aligned stackable divided grid">
+          <div class="column column-feature">
+            <div class="ui icon header">
+              <i class="gift icon"></i>
+              Shop 3D Prints
+            </div>
+            <p>From cool gifts for your friends to useful household items.</p>
+            <p>
+              <a class="ui button" href="/printing_sets">
+                Get Started
+              </a>
+            </p>
+          </div>
+          <div class="column column-feature">
+            <div class="ui icon header">
+              <i class="truck icon"></i>
+              We Ship Worldwide
+            </div>
+            <p>It doesn't matter in which country you live. We can ship there.</p>
+            <p>
+              <a class="ui green button" href="/printing_sets">
+                Start Shopping Now!
+              </a>
+            </p>
+          </div>
+          <div class="column column-feature">
+            <div class="ui icon header">
+              <i class="paw icon"></i>
+              Pay With Dogecoin
+            </div>
+            <p>Shop using the most modern and fun currency in the world.</p>
+            <p>
+              <a class="ui button" href="/printing_sets">
+                wow!
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- -->
+    <div class="ui centered page grid" style="padding: 35px">
+      <div class="ui form seven wide subscribe column">
+        <div class="ui header">
+          <h3 class="ui header centered">Subscribe to Mailing List</h3>
+          <p class="ui header centered">Get special offers and updates straight to your inbox.</p>
+        </div>
+        <form class="ui form" action="/subscribe">
+          <div class="field">
+            <div class="ui fluid action input">
+              <input placeholder="youremail@example.com" type="text">
+              <button type="submit" class="right attached ui button">Subscribe</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="ui recent-works vertical segment">
+      <div class="ui very relaxed stackable centered page grid">
+        <div class="row">
+          <div class="eight wide centered column">
+            <h1 class="center aligned ui inverted header">
+              Featured Items
+            </h1>
+            <div class="ui horizontal divider"><i class="white flaticon-camera icon"></i></div>
+            <p class="ui centered lead">Check Out Our <br> Customers Favourite Items!</p>
+          </div>
+        </div>
+      </div>
+      <div class="fourteen wide column">
+        <div class="ui three column aligned stackable divided grid">
+          <% @printing_sets = PrintingSet.all.limit(3) %>
+          <%= render '/printing_sets/printing_set_cards' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 <!--
     <div class="ui vertical segment">
@@ -250,29 +251,29 @@
       </div>
     </div>
 -->
-    <div class="ui inverted footer vertical segment center">
-      <div class="ui stackable center aligned page grid">
-        <div class="four column row">
-          <div class="column">
-            <h5 class="ui inverted header">Development</h5>
-            <div class="ui inverted link list">
-              <a class="item" href="http://rosalilastudio.com">Our Blog</a>
-              <a class="item" href="https://github.com/Rosalila/ThreeDEasy">Github</a>
-            </div>
+  <div class="ui inverted footer vertical segment center">
+    <div class="ui stackable center aligned page grid">
+      <div class="four column row">
+        <div class="column">
+          <h5 class="ui inverted header">Development</h5>
+          <div class="ui inverted link list">
+            <a class="item" href="http://rosalilastudio.com">Our Blog</a>
+            <a class="item" href="https://github.com/Rosalila/ThreeDEasy">Github</a>
           </div>
-          <div class="column">
-            <h5 class="ui inverted header">About Dogecoin</h5>
-            <div class="ui inverted link list">
-              <a class="item" href="http://dogecoin.com/">Get Started</a>
-            </div>
+        </div>
+        <div class="column">
+          <h5 class="ui inverted header">About Dogecoin</h5>
+          <div class="ui inverted link list">
+            <a class="item" href="http://dogecoin.com/">Get Started</a>
           </div>
-          <div class="column">
-            <h5 class="ui inverted header">Landing Page Template</h5>
-            <div class="ui inverted link list">
-              <a class="item" href="http://scripteden.com/">By Script Eden</a>
-            </div>
+        </div>
+        <div class="column">
+          <h5 class="ui inverted header">Landing Page Template</h5>
+          <div class="ui inverted link list">
+            <a class="item" href="http://scripteden.com/">By Script Eden</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

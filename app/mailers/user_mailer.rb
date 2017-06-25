@@ -4,6 +4,6 @@ class UserMailer < ApplicationMailer
   def welcome_email(user)
     @user = user
     @url  = "http://3deasy.co/users/sign_in"
-    mail(:to => user.email, :subject => "Welcome to 3dEasy.co")
+    mail(:to => user.email, :subject => "Welcome to 3DEasy.co")
   end
 end
