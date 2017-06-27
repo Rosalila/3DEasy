@@ -9,11 +9,21 @@ class HomeController < ApplicationController
     email = params[:email]
 
     if !email =~ Devise.email_regexp
-      return
       redirect_to root_url
+      return
     end
 
-    email_subscription = EmailSubscription.new
+    email_subscription = EmailSubscription.find_by(email: email)
+
+    if email_subscription && email_subscription.confirmed
+      redirect_to root_url
+      return
+    end
+
+    if !email_subscription
+      email_subscription = EmailSubscription.new
+    end
+
     email_subscription.email = email
     email_subscription.key = SecureRandom.hex(25)
     email_subscription.confirmed = false

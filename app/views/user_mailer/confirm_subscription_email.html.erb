@@ -6,8 +6,11 @@
   <body>
     <h1>You're almost there!</h1>
     <p>
-      To complete your email subscription, just follow this link: <%= @url %>.
+      Just follow this link to complete your email subscription: <%= @confirm_url %>.
     </p>
     <p>Thanks for your interest in 3DEasy.co, and have a great day!</p>
+    <p>
+      If you didn't subscribe to 3DEasy just ignore this message or follow this link to unsubscribe: <%= @unsubscribe_url %>.
+    </p>
   </body>
 </html>

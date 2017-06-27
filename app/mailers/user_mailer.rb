@@ -10,7 +10,8 @@ class UserMailer < ApplicationMailer
   def confirm_subscription_email(user_subscription)
     @email = user_subscription.email
     @key = user_subscription.key
-    @url = "http://3deasy.co/confirm_subscription?email=" + @email + "&key=" + @key
+    @confirm_url = "http://3deasy.co/confirm_subscription?email=" + @email + "&key=" + @key
+    @unsubscribe_url = "http://3deasy.co/unsubscribe?email=" + @email + "&key=" + @key
     mail(:to => @email, :subject => "Email confirmation")
   end
 end
