@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   resources :cupons
 
   get "home" => "home#index", as: "home"
-  get "subscribe" => "home#subscribe", as: "subscribe"
-  get "unsubscribe" => "home#unsubscribe", as: "unsubscribe"
-  get "confirm_subscription" => "home#confirm_subscription", as: "confirm_subscription"
   get "items/:printing_set_id" => "printing_sets#show_item_by_name", as: "show_item_by_name"
+
+  get "subscribe" => "email_subscription#subscribe", as: "subscribe"
+  get "unsubscribe" => "email_subscription#unsubscribe", as: "unsubscribe"
+  get "confirm_subscription" => "email_subscription#confirm_subscription", as: "confirm_subscription"
 
   root "home#index"
 

@@ -159,12 +159,15 @@ class OrdersController < ApplicationController
   end
 
   def add_to_cart
+
+    @printing_set = PrintingSet.find_by_id(params[:printing_set_id])
+
     if !current_user
+      session[:printing_set_id_carry] = @printing_set.id
+      puts "ola"
       redirect_to new_user_session_path
       return
     end
-
-    @printing_set = PrintingSet.find_by_id(params[:printing_set_id])
 
     if CartItem.exists?({ user_id: current_user.id, printing_set_id: @printing_set.id })
       redirect_to PrintingHub.first, notice: 'You already have that item on your cart.'

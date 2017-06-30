@@ -8,9 +8,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+   super
+   printing_set_carry
+  end
 
   # GET /resource/edit
   # def edit

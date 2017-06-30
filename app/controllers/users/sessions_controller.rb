@@ -7,9 +7,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+   super
+   printing_set_carry
+  end
 
   # DELETE /resource/sign_out
   # def destroy

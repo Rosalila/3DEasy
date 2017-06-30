@@ -8,4 +8,13 @@ class ApplicationController < ActionController::Base
     @cupon_code = @cupon_code.upcase if @cupon_code
     cookies[:cupon_code] = @cupon_code
   end
+
+  def printing_set_carry
+    @printing_set_id = session[:printing_set_id_carry]
+    if @printing_set_id && !CartItem.exists?({ user_id: current_user.id, printing_set_id: @printing_set_id })
+      CartItem.create({ user_id: current_user.id, printing_set_id: @printing_set_id, amount: 1 })
+      session[:printing_set_id_carry] = nil
+    end
+    session[:printing_set_id_carry] = nil
+  end
 end
