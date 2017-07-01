@@ -162,9 +162,12 @@ class OrdersController < ApplicationController
 
     @printing_set = PrintingSet.find_by_id(params[:printing_set_id])
 
+    if !@printing_set
+      return
+    end
+
     if !current_user
       session[:printing_set_id_carry] = @printing_set.id
-      puts "ola"
       redirect_to new_user_session_path
       return
     end

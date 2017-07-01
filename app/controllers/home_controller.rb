@@ -4,4 +4,7 @@ class HomeController < ApplicationController
       redirect_to printing_sets_path
     end
   end
+
+  def subscribe
+  end
 end

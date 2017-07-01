@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :cupons
 
   get "home" => "home#index", as: "home"
+  get "/landing/subscribe" => "home#subscribe", as: "landing_subscribe"
   get "items/:printing_set_id" => "printing_sets#show_item_by_name", as: "show_item_by_name"
 
   get "subscribe" => "email_subscription#subscribe", as: "subscribe"

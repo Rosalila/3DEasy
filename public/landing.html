@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://scripteden.com/previews/start-up/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Standard Meta -->
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properities -->
+  <title>Start UP - Creative Landing Page Template</title>
+
+  <link rel="stylesheet" type="text/css" href="/semantic/semantic.css">
+  <link rel="stylesheet" type="text/css" href="/css/homepage.css">
+  <link rel="stylesheet" type="text/css" href="/css/flaticon.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/semantic/semantic.js"></script>
+  <script src="/js/homepage.js"></script>
+   <script>
+    $(function(){
+        $('.ui.card').popup();
+    });
+    </script>
+</head>
+<body>
+  <div id="home">
+    <div class="ui inverted masthead centered segment">
+      <div class="ui page grid">
+        <div class="column">
+          <div class="ui secondary pointing menu">
+  <!--
+            <a class="logo item">
+              startup
+            </a>
+            <a class="active item">
+              <i class="flaticon-home"></i> Home
+            </a>
+            <a class="item">
+              <i class="flaticon-mail"></i> Messages
+            </a>
+            <a class="item">
+              <i class="flaticon-heart"></i> Friends
+            </a>
+  -->
+            <div class="right menu">
+  <!--
+              <div class="item">
+                <div class="ui icon input">
+                  <input placeholder="Search..." type="text">
+                  <i class="flaticon-position link icon"></i>
+                </div>
+              </div>
+  -->
+                <% if !current_user %>
+        	        <%= link_to "Log in", new_user_session_path, class: 'ui item' %>
+        	        <%= link_to "Sign up", new_user_registration_path, class: 'ui item' %>
+      					<% else %>
+      	    		  <%= link_to destroy_user_session_path, :method => :delete, :class => "ui item" do %>Sign out<%end%>
+      					<% end %>
+
+              </div>
+            </div>
+
+            <div class="ui transition information visible" style="">
+              <h1 class="ui inverted centered header">
+                3DEasy.co
+              </h1>
+                <p class="ui centered lead">Shop 3D prints easily using Dogecoins.</p>
+                <a href="/printing_sets" class="large basic inverted animated fade ui button">
+                  <div class="visible content">Get started</div>
+                  <div class="hidden content">Start Shoping Now</div>
+                </a>
+                <div class="ui centerted image" style="border: 0px">
+                  <img src="/img/banner.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>>
+        <div class="ui vertical feature segment">
+          <div class="ui centered page grid">
+            <div class="fourteen wide column">
+              <div class="ui three column center aligned stackable divided grid">
+                <div class="column column-feature">
+                  <div class="ui icon header">
+                    <i class="gift icon"></i>
+                    Shop 3D Prints
+                  </div>
+                  <p>From cool gifts for your friends to useful household items.</p>
+                  <p>
+                    <a class="ui button" href="/printing_sets">
+                      Get Started
+                    </a>
+                  </p>
+                </div>
+                <div class="column column-feature">
+                  <div class="ui icon header">
+                    <i class="truck icon"></i>
+                    We Ship Worldwide
+                  </div>
+                  <p>It doesn't matter in which country you live. We can ship there.</p>
+                  <p>
+                    <a class="ui green right labeled icon button" href="/printing_sets">
+                      Start Shopping Now!
+                      <i class="right flaticon-move icon"></i>
+                    </a>
+                  </p>
+                </div>
+                <div class="column column-feature">
+                  <div class="ui icon header">
+                    <i class="paw icon"></i>
+                    Pay With Dogecoin
+                  </div>
+                  <p>Shop using the most modern and fun currency in the world.</p>
+                  <p>
+                    <a class="ui button" href="/printing_sets">
+                      wow!
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ui centered page grid">
+            <h3 class="subscribe-header">Subscribe to Mailing List</h3>
+              <p class="ui centered lead large">At least he won't reach his highest potential unless you enroll him in Cat University's 2013 class.</p>
+     <!-- X -->
+              <div class="ui form eight wide subscribe column">
+                <div class="field">
+                  <div class="ui fluid action input">
+                    <input placeholder="Susbcribe..." type="text">
+                    <div class="ui button">Susbcribe</div>
+                  </div>
+                </div>
+     <!-- X -->
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui recent-works vertical segment">
+            <div class="ui very relaxed stackable centered page grid">
+              <div class="row">
+                <div class="eight wide centered column">
+                  <h1 class="center aligned ui inverted header">
+                    Featured Items
+                  </h1>
+                <div class="ui horizontal divider"><i class="white flaticon-camera icon"></i></div>
+                <p class="ui centered lead">Check Out Our <br> Customers Favourite Items!</p>
+              </div>
+            </div>
+            <div class="fourteen wide column">
+              <div class="ui three column aligned stackable divided grid">
+                <div class="column">
+                  <div class="ui card" data-html="&lt;div class=&#39;header&#39;&gt;User Rating&lt;/div&gt;&lt;div class=&#39;content&#39;&gt;&lt;div class=&#39;ui star rating&#39;&gt;&lt;i class=&#39;active icon&#39;&gt;&lt;/i&gt;&lt;i class=&#39;active icon&#39;&gt;&lt;/i&gt;&lt;i class=&#39;active icon&#39;&gt;&lt;/i&gt;&lt;i class=&#39;icon&#39;&gt;&lt;/i&gt;&lt;i class=&#39;icon&#39;&gt;&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;">
+                    <div class="image">
+                      <img src="/img/totoro-horizontal.jpg">
+                    </div>
+                    <div class="content">
+                      <div class="header">My Neighbor Totoro</div>
+                      <div class="description">
+                        Two sisters move to the country with their father in order to be closer to their hospitalized mother, and discover the surrounding trees are inhabited by magical spirits.
+                      </div>
+                    </div>
+                    <div class="ui two bottom attached buttons">
+                      <div class="ui button">
+                        <i class="flaticon-plus icon"></i>
+                        Queue
+                      </div>
+                      <div class="ui pink button">
+                        <i class="flaticon-play icon"></i>
+                        Watch
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui vertical segment">
+        <div class="ui stackable center aligned page grid">
+          <div class="row">
+            <div class="eight wide column">
+              <h1 class="ui header">
+                Our Clients
+              </h1><div class="ui horizontal divider"><i class="flaticon-settings icon"></i></div>
+                <p class="ui centered lead">
+                Many Companies Rely on Our Cat Knowledge
+                </p>
+              <br>
+            </div>
+          </div>
+          <div class="four column logo row">
+            <div class="column">
+              <div class="ui shape animating">
+                <div class="sides">
+                  <div class="side">
+                    <i class="huge flaticon-facebook icon"></i>
+                  </div>
+                  <div class="side active hidden">
+                    <i class="huge flaticon-google icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-twitter icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-pinterest icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-google icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-more icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="ui shape animating">
+                <div class="sides">
+                  <div class="side">
+                    <i class="huge flaticon-google icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-more icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-twitter icon"></i>
+                  </div>
+                  <div class="side active hidden">
+                    <i class="huge flaticon-facebook icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-google icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-twitter icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui shape animating">
+                <div class="sides">
+                  <div class="side">
+                    <i class="huge flaticon-facebook icon"></i>
+                  </div>
+                  <div class="side active hidden">
+                    <i class="huge flaticon-google icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-twitter icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-pinterest icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-google icon"></i>
+                  </div>
+                  <div class="side">
+                    <i class="huge flaticon-more icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="ui shape animating" style="width: 72px; height: 50px;">
+                <div class="sides" style="transform: translateX(0px) rotateY(-180deg); transition-duration: 700ms;">
+                  <div class="side" style="transition-duration: 700ms;">
+                    <i class="huge flaticon-google icon"></i>
+                  </div>
+                  <div class="side" style="transition-duration: 700ms;">
+                    <i class="huge flaticon-more icon"></i>
+                  </div>
+                  <div class="side" style="transition-duration: 700ms;">
+                    <i class="huge flaticon-twitter icon"></i>
+                  </div>
+                  <div class="side active hidden" style="transform: rotateY(0deg); transition-duration: 700ms;">
+                    <i class="huge flaticon-facebook icon"></i>
+                  </div>
+                  <div class="side animating" style="display: block; left: 0px; transform: rotateY(-180deg); transition-duration: 700ms;">
+                    <i class="huge flaticon-google icon"></i>
+                  </div>
+                  <div class="side" style="transition-duration: 700ms;">
+                    <i class="huge flaticon-twitter icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui inverted footer vertical segment center">
+        <div class="ui stackable center aligned page grid">
+          <div class="four column row">
+            <div class="column">
+              <h5 class="ui inverted header">Development</h5>
+              <div class="ui inverted link list">
+                <a class="item" href="http://rosalilastudio.com">Our Blog</a>
+                <a class="item" href="https://github.com/Rosalila/ThreeDEasy">Github</a>
+              </div>
+            </div>
+            <div class="column">
+              <h5 class="ui inverted header">About Dogecoin</h5>
+              <div class="ui inverted link list">
+                <a class="item" href="http://dogecoin.com/">Get Started</a>
+              </div>
+            </div>
+            <div class="column">
+              <h5 class="ui inverted header">Landing Page Template</h5>
+              <div class="ui inverted link list">
+                <a class="item" href="http://scripteden.com/">By Script Eden</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
