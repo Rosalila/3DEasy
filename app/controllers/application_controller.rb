@@ -1,6 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  def get_featured_items
+    printing_sets = []
+    FeaturedItem.all.each do |featured_item|
+      printing_sets.push(featured_item.printing_set)
+    end
+    return printing_sets
+  end
+
   def update_cupon cupon_code_param
     @cupon_code = nil
     @cupon_code = cookies[:cupon_code] if cookies[:cupon_code]

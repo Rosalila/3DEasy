@@ -4,6 +4,7 @@ class PrintingSet < ApplicationRecord
   has_many :printables
   has_many :order_items
   has_many :printing_set_images
+  has_many :featured_items
 
   def id_and_paramterized_name
     return self.id.to_s + "-" + self.name.parameterize
@@ -21,4 +22,3 @@ class PrintingSet < ApplicationRecord
   end
 
 end
-
