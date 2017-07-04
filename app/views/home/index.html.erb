@@ -38,7 +38,7 @@
 
         <div class="ui transition information visible" style="">
           <h1 class="ui inverted centered header">3DEasy.co</h1>
-          <p class="ui centered lead">Shop 3D prints easily using Dogecoins.</p>
+          <p class="ui centered lead">Dogecoin shop 3D Prints including doge figures.</p>
           <a id="home-button" href="/printing_sets" class="large basic inverted animated fade ui button">
             <div class="visible content">Get started</div>
             <div class="hidden content">Start Shoping Now</div>
@@ -51,48 +51,7 @@
     </div>
   </div>
   <div class="ui vertical feature segment">
-    <div class="ui centered page grid">
-      <div class="fourteen wide column">
-        <div class="ui three column center aligned stackable divided grid">
-          <div class="column column-feature">
-            <div class="ui icon header">
-              <i class="gift icon"></i>
-              Shop 3D Prints
-            </div>
-            <p>From cool gifts for your friends to useful household items.</p>
-            <p>
-              <a class="ui button" href="/printing_sets">
-                Get Started
-              </a>
-            </p>
-          </div>
-          <div class="column column-feature">
-            <div class="ui icon header">
-              <i class="truck icon"></i>
-              We Ship Worldwide
-            </div>
-            <p>It doesn't matter in which country you live. We can ship there.</p>
-            <p>
-              <a class="ui green button" href="/printing_sets">
-                Start Shopping Now!
-              </a>
-            </p>
-          </div>
-          <div class="column column-feature">
-            <div class="ui icon header">
-              <i class="paw icon"></i>
-              Pay With Dogecoin
-            </div>
-            <p>Shop using the most modern and fun currency in the world.</p>
-            <p>
-              <a class="ui button" href="/printing_sets">
-                wow!
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%=render 'features'%>
 
 <!-- -->
     <div class="ui centered page grid" style="padding: 35px">
@@ -113,24 +72,7 @@
     </div>
 
 
-    <div class="ui recent-works vertical segment">
-      <div class="ui very relaxed stackable centered page grid">
-        <div class="row">
-          <div class="eight wide centered column">
-            <h1 class="center aligned ui inverted header">
-              Featured Items
-            </h1>
-            <div class="ui horizontal divider"><i class="white flaticon-camera icon"></i></div>
-            <p class="ui centered lead">Check Out Our <br> Customers Favourite Items!</p>
-          </div>
-        </div>
-      </div>
-      <div class="fourteen wide column">
-        <div class="ui three column aligned stackable divided grid centered">
-          <%= render '/printing_sets/printing_set_cards' %>
-        </div>
-      </div>
-    </div>
+    <%=render 'featured_items'%>
   </div>
 
 
@@ -250,29 +192,5 @@
       </div>
     </div>
 -->
-  <div class="ui inverted footer vertical segment center">
-    <div class="ui stackable center aligned page grid">
-      <div class="four column row">
-        <div class="column">
-          <h5 class="ui inverted header">Development</h5>
-          <div class="ui inverted link list">
-            <a class="item" href="http://rosalilastudio.com">Our Blog</a>
-            <a class="item" href="https://github.com/Rosalila/ThreeDEasy">Github</a>
-          </div>
-        </div>
-        <div class="column">
-          <h5 class="ui inverted header">About Dogecoin</h5>
-          <div class="ui inverted link list">
-            <a class="item" href="http://dogecoin.com/">Get Started</a>
-          </div>
-        </div>
-        <div class="column">
-          <h5 class="ui inverted header">Landing Page Template</h5>
-          <div class="ui inverted link list">
-            <a class="item" href="http://scripteden.com/">By Script Eden</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'footer'%>
 </div>

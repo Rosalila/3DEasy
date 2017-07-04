@@ -6,29 +6,7 @@
           <a class="logo item">
             3DEasy.co
           </a>
-<!--
-          <a class="logo item">
-            startup
-          </a>
-          <a class="active item">
-            <i class="flaticon-home"></i> Home
-          </a>
-          <a class="item">
-            <i class="flaticon-mail"></i> Messages
-          </a>
-          <a class="item">
-            <i class="flaticon-heart"></i> Friends
-          </a>
--->
           <div class="right menu">
-<!--
-            <div class="item">
-              <div class="ui icon input">
-                <input placeholder="Search..." type="text">
-                <i class="flaticon-position link icon"></i>
-              </div>
-            </div>
--->
             <% if !current_user %>
               <%= link_to "Log in", new_user_session_path, class: 'ui item' %>
               <%= link_to "Sign up", new_user_registration_path, class: 'ui item' %>
@@ -40,7 +18,7 @@
         </div>
 
         <div class="ui transition information visible" style="">
-          <h1 class="ui inverted centered header">Shop 3D prints easily using Dogecoins</h1>
+          <h1 class="ui inverted centered header">Dogecoin shop 3D Prints including doge figures</h1>
           <p class="ui centered lead">Subscribe to receive special offers and updates straight to your inbox.</p>
 
             <form class="ui form" action="/subscribe">
@@ -64,212 +42,9 @@
     </div>
   </div>
   <div class="ui vertical feature segment">
-    <div class="ui centered page grid">
-      <div class="fourteen wide column">
-        <div class="ui three column center aligned stackable divided grid">
-          <div class="column column-feature">
-            <div class="ui icon header">
-              <i class="gift icon"></i>
-              Shop 3D Prints
-            </div>
-            <p>From cool gifts for your friends to useful household items.</p>
-            <p>
-              <a class="ui button" href="/printing_sets">
-                Get Started
-              </a>
-            </p>
-          </div>
-          <div class="column column-feature">
-            <div class="ui icon header">
-              <i class="truck icon"></i>
-              We Ship Worldwide
-            </div>
-            <p>It doesn't matter in which country you live. We can ship there.</p>
-            <p>
-              <a class="ui green button" href="/printing_sets">
-                Start Shopping Now!
-              </a>
-            </p>
-          </div>
-          <div class="column column-feature">
-            <div class="ui icon header">
-              <i class="paw icon"></i>
-              Pay With Dogecoin
-            </div>
-            <p>Shop using the most modern and fun currency in the world.</p>
-            <p>
-              <a class="ui button" href="/printing_sets">
-                wow!
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-<!-- -->
-
-
-
-    <div class="ui recent-works vertical segment">
-      <div class="ui very relaxed stackable centered page grid">
-        <div class="row">
-          <div class="eight wide centered column">
-            <h1 class="center aligned ui inverted header">
-              Featured Items
-            </h1>
-            <div class="ui horizontal divider"><i class="white flaticon-camera icon"></i></div>
-            <p class="ui centered lead">Check Out Our <br> Customers Favourite Items!</p>
-          </div>
-        </div>
-      </div>
-      <div class="fourteen wide column">
-        <div class="ui three column aligned stackable divided grid centered">
-          <%= render '/printing_sets/printing_set_cards' %>
-        </div>
-      </div>
-    </div>
+    <%=render 'features'%>
+    <%=render 'featured_items' %>
   </div>
 
-
-<!--
-    <div class="ui vertical segment">
-      <div class="ui stackable center aligned page grid">
-        <div class="row">
-          <div class="eight wide column">
-            <h1 class="ui header">
-              Our Clients
-            </h1><div class="ui horizontal divider"><i class="flaticon-settings icon"></i></div>
-              <p class="ui centered lead">
-              Many Companies Rely on Our Cat Knowledge
-              </p>
-            <br>
-          </div>
-        </div>
-        <div class="four column logo row">
-          <div class="column">
-            <div class="ui shape animating">
-              <div class="sides">
-                <div class="side">
-                  <i class="huge flaticon-facebook icon"></i>
-                </div>
-                <div class="side active hidden">
-                  <i class="huge flaticon-google icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-twitter icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-pinterest icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-google icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-more icon"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="ui shape animating">
-              <div class="sides">
-                <div class="side">
-                  <i class="huge flaticon-google icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-more icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-twitter icon"></i>
-                </div>
-                <div class="side active hidden">
-                  <i class="huge flaticon-facebook icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-google icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-twitter icon"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="ui shape animating">
-              <div class="sides">
-                <div class="side">
-                  <i class="huge flaticon-facebook icon"></i>
-                </div>
-                <div class="side active hidden">
-                  <i class="huge flaticon-google icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-twitter icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-pinterest icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-google icon"></i>
-                </div>
-                <div class="side">
-                  <i class="huge flaticon-more icon"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="ui shape animating" style="width: 72px; height: 50px;">
-              <div class="sides" style="transform: translateX(0px) rotateY(-180deg); transition-duration: 700ms;">
-                <div class="side" style="transition-duration: 700ms;">
-                  <i class="huge flaticon-google icon"></i>
-                </div>
-                <div class="side" style="transition-duration: 700ms;">
-                  <i class="huge flaticon-more icon"></i>
-                </div>
-                <div class="side" style="transition-duration: 700ms;">
-                  <i class="huge flaticon-twitter icon"></i>
-                </div>
-                <div class="side active hidden" style="transform: rotateY(0deg); transition-duration: 700ms;">
-                  <i class="huge flaticon-facebook icon"></i>
-                </div>
-                <div class="side animating" style="display: block; left: 0px; transform: rotateY(-180deg); transition-duration: 700ms;">
-                  <i class="huge flaticon-google icon"></i>
-                </div>
-                <div class="side" style="transition-duration: 700ms;">
-                  <i class="huge flaticon-twitter icon"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
--->
-  <div class="ui inverted footer vertical segment center">
-    <div class="ui stackable center aligned page grid">
-      <div class="four column row">
-        <div class="column">
-          <h5 class="ui inverted header">Development</h5>
-          <div class="ui inverted link list">
-            <a class="item" href="http://rosalilastudio.com">Our Blog</a>
-            <a class="item" href="https://github.com/Rosalila/ThreeDEasy">Github</a>
-          </div>
-        </div>
-        <div class="column">
-          <h5 class="ui inverted header">About Dogecoin</h5>
-          <div class="ui inverted link list">
-            <a class="item" href="http://dogecoin.com/">Get Started</a>
-          </div>
-        </div>
-        <div class="column">
-          <h5 class="ui inverted header">Landing Page Template</h5>
-          <div class="ui inverted link list">
-            <a class="item" href="http://scripteden.com/">By Script Eden</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%=render 'footer'%>
 </div>
