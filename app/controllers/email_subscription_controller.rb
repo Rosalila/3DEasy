@@ -18,13 +18,8 @@ class EmailSubscriptionController < ApplicationController
       elsif email_subscription.confirmed
         @subscription_state = "already confirmed"
         return
-      else
-        @subscription_state = "error"
-        return
       end
-    end
-
-    if !email_subscription
+    else
       email_subscription = EmailSubscription.new
     end
 
