@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170701204944) do
+ActiveRecord::Schema.define(version: 20170713141705) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "user_id"
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(version: 20170701204944) do
     t.string   "email"
     t.string   "key"
     t.boolean  "confirmed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.boolean  "unsubscribed"
   end
 
   create_table "featured_items", force: :cascade do |t|
