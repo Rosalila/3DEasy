@@ -49,9 +49,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.5"
-     inkscape:cx="2898.6439"
-     inkscape:cy="-3126.4632"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="3029.5369"
+     inkscape:cy="-3201.6021"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -958,7 +958,10 @@
        y="4558.5127"
        x="3361.8862"
        style="font-size:43.48521423px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffff00;fill-opacity:1;stroke:none;font-family:ComicNeueSansID;-inkscape-font-specification:ComicNeueSansID Medium"
-       xml:space="preserve"><tspan
+       xml:space="preserve"
+       inkscape:export-filename="wow.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          y="4558.5127"
          x="3361.8862"
          id="tspan3136"
@@ -969,7 +972,10 @@
        x="3338.4089"
        y="4321.5566"
        id="text3138"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="wow.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          id="tspan3140"
          x="3338.4089"
@@ -980,7 +986,10 @@
        x="3130.9075"
        y="4195.2417"
        id="text3150"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="wow.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          id="tspan3152"
          x="3130.9075"
@@ -991,7 +1000,10 @@
        y="4444.167"
        x="3251.8533"
        style="font-size:43.48521423px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff00ff;fill-opacity:1;stroke:none;font-family:ComicNeueSansID;-inkscape-font-specification:ComicNeueSansID Medium"
-       xml:space="preserve"><tspan
+       xml:space="preserve"
+       inkscape:export-filename="wow.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          y="4444.167"
          x="3251.8533"
          id="tspan3164"
@@ -1002,7 +1014,10 @@
        y="4298.0586"
        x="2721.1787"
        style="font-size:43.48521423px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#00ff00;fill-opacity:1;stroke:none;font-family:ComicNeueSansID;-inkscape-font-specification:ComicNeueSansID Medium"
-       xml:space="preserve"><tspan
+       xml:space="preserve"
+       inkscape:export-filename="wow.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          y="4298.0586"
          x="2721.1787"
          id="tspan3144"
@@ -1013,7 +1028,10 @@
        x="2603.7961"
        y="4365.3789"
        id="text3146"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="wow.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          id="tspan3148"
          x="2603.7961"
@@ -1021,12 +1039,15 @@
     <text
        sodipodi:linespacing="125%"
        id="text3154"
-       y="4488.8491"
-       x="2692.7869"
+       y="4546.8315"
+       x="2606.5198"
        style="font-size:43.48521423px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff00ff;fill-opacity:1;stroke:none;font-family:ComicNeueSansID;-inkscape-font-specification:ComicNeueSansID Medium"
-       xml:space="preserve"><tspan
-         y="4488.8491"
-         x="2692.7869"
+       xml:space="preserve"
+       inkscape:export-filename="wow.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         y="4546.8315"
+         x="2606.5198"
          id="tspan3156"
          sodipodi:role="line">many fun</tspan></text>
     <text
@@ -1035,10 +1056,27 @@
        x="2714.1011"
        y="4188.2119"
        id="text3158"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="wow.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          id="tspan3160"
          x="2714.1011"
          y="4188.2119">much surprise</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:43.48521423px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:ComicNeueSansID;-inkscape-font-specification:ComicNeueSansID Medium"
+       x="2704.9043"
+       y="4442.7476"
+       id="text3138-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="wow.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan3140-0"
+         x="2704.9043"
+         y="4442.7476">very 3D</tspan></text>
   </g>
 </svg>
