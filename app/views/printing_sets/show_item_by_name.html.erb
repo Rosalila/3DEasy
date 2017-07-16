@@ -38,6 +38,10 @@
 				Ð <%= @printing_set.doges %> + Shipping
 			<% end %>
 		</p>
+    <p>
+      <strong>Weight:</strong>
+      <%= @printing_set.grams %>g
+    </p>
 
 		<%= form_tag("/add_to_cart", method: "post") do %>
 			<input type="hidden" value="<%=@printing_set.id%>" name="printing_set_id"/>

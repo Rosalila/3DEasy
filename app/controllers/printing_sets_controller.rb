@@ -104,6 +104,6 @@ class PrintingSetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def printing_set_params
-      params.require(:printing_set).permit(:name, :printing_hub_id, :doges, :description, :image)
+      params.require(:printing_set).permit(:name, :printing_hub_id, :doges, :description, :image, :grams)
     end
 end
