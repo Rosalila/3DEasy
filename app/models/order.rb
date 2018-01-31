@@ -7,7 +7,7 @@ class Order < ApplicationRecord
 
   def doge_deposits
     client = DogecoinClient.new
-    if client.valid?
+    if client.valid? and doge_address
       return client.get_received_by_address(doge_address)
     else
       return 0
