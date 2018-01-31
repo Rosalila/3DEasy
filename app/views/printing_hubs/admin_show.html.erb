@@ -102,7 +102,9 @@
         <td><%= order.doge_address %></td>
         <td><%= order.shipping_address %></td>
         <td><%= order.shipping_type.name %></td>
-        <td><%= order.doges-order.doge_deposits_unconfirmed <= 0 ? "done" : "pending" %></td>
+	<% if order.doge_deposits_unconfirmed %>
+          <td><%= order.doges-order.doge_deposits_unconfirmed <= 0 ? "done" : "pending" %></td>
+	<% end %>
         <td><%= order.doges-order.doge_deposits <= 0 ? "done" : "pending" %></td>
         <td><%= link_to 'Show', order, class: 'ui button' %></td>
       </tr>
